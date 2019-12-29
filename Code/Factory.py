@@ -4,7 +4,7 @@ import binascii
 import struct
 import math
 import array
-#import RPi.GPIO as GPIO
+import RPi.GPIO as GPIO
 
 pinceHeight =0
 xMax=0
@@ -67,17 +67,17 @@ class RobotControl():
         self.angularacceleration = 1
         self.linearvelocity = 1
         self.linearacceleration = 1
-        # Positonsvariablen für die Achse 0
+        # Positonsvariablen fur die Achse 0
         self.angle0Rad = 0
-        # Positionsvariblen für die Achse 1
+        # Positionsvariblen fur die Achse 1
         self.angle1Rad = 0
-        # Positionsvariblen für die Achse 2
+        # Positionsvariblen fur die Achse 2
         self.angle2Rad = 0
-        # Positionsvariblen für die Achse 3
+        # Positionsvariblen fur die Achse 3
         self.angle3Rad = 0
-        # Positionsvariblen für die Achse 4
+        # Positionsvariblen fur die Achse 4
         self.angle4Rad = 0
-        # Positionsvariblen für die Achse 5
+        # Positionsvariblen fur die Achse 5
         self.angle5Rad = 0
         # TCP
         self.posx = 0
@@ -132,7 +132,7 @@ class RobotControl():
 
         self.xSearch = 0.388
         self.ySearch = -0.388
-        self.zSearch = 0.2
+        self.zSearch = 0.3
         self.rzSearch = 0
 
 
@@ -141,11 +141,11 @@ class RobotControl():
         pinceOut1 = 11  # pin  of Raspberry connected to plier output1, tightening output
         pinceOut2 = 13  # pin  of Raspberry connected to plier output2, loossing output
         pinceIn1 = 16  # pin  of Raspberry connected to plier digital input
-        """GPIO.setmode(GPIO.BOARD)
+        GPIO.setmode(GPIO.BOARD)
         GPIO.setwarnings(False)
         GPIO.setup(pinceIn1, GPIO.OUT)
         GPIO.setup(pinceOut1, GPIO.IN)
-        GPIO.setup(pinceOut2, GPIO.IN)"""
+        GPIO.setup(pinceOut2, GPIO.IN)
 
         # assigne pins for LEDs showing which part of the code is used by machine
         global led_Start, led_Stop, led_In_Master, led_Got_Object
@@ -154,11 +154,11 @@ class RobotControl():
         led_In_Master = 31
         led_Got_Object = 33
 
-        """GPIO.setup(led_In_Master, GPIO.OUT)
+        GPIO.setup(led_In_Master, GPIO.OUT)
         GPIO.setup(led_Got_Object, GPIO.OUT)
         # initial state of pins
         GPIO.output(led_In_Master, GPIO.LOW)
-        GPIO.output(led_Got_Object, GPIO.LOW)"""
+        GPIO.output(led_Got_Object, GPIO.LOW)
 
         # Netzwerk
         self.host = "192.168.1.3"
@@ -307,23 +307,23 @@ class RobotControl():
             print("Object is too big to hold")
 #-----------------------------------------------------------------------------------------------------------------------
     def statePliers(self):
-        """if GPIO.input(pinceOut1) == 0 or GPIO.input(pinceOut2) == 1:
+        if GPIO.input(pinceOut1) == 0 or GPIO.input(pinceOut2) == 1:
             self.takeOrRelease = False
             self.master(EV_GRAB)
         if GPIO.input(pinceOut2) == 0 or GPIO.input(pinceOut1) == 1:
             self.takeOrRelease = False
-            self.master(EV_RELEASE)"""
+            self.master(EV_RELEASE)
 
 #-----------------------------------------------------------------------------------------------------------------------
     # adjust openning of the pince,
     def adjustPince(self, choice):
         # if to close the pince
-        """if (choice == False):
+        if (choice == False):
             GPIO.output(pinceIn1, GPIO.LOW)  # tighten
 
         # if to open the pince
         else:
-            GPIO.output(pinceIn1, GPIO.HIGH)  # loosen"""
+            GPIO.output(pinceIn1, GPIO.HIGH)  # loosen
 #-----------------------------------------------------------------------------------------------------------------------
     # Take object for moving
     def catchObject(self):
