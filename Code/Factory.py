@@ -431,12 +431,12 @@ class RobotControl():
     #in event of pressing  stop-button, go to initial position and stop searching until new request
         self.__init__()
         self.calibrate()
-        # LED turns off
-       # GPIO.output(led_In_Master, GPIO.LOW)
+        #LED turns off
+       GPIO.output(led_In_Master, GPIO.LOW)
 
 #-----------------------------------------------------------------------------------------------------------------------
     def getPins(self, pin =float):
-        #state = GPIO.gpio_function(pin)
+        state = GPIO.gpio_function(pin)
         print (state)
 
 #-----------------------------------------------------------------------------------------------------------------------

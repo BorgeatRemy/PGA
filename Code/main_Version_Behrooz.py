@@ -2,13 +2,13 @@ from Factory import RobotControl
 from threading import Thread
 from threading import Timer
 import math
-#import RPi.GPIO as GPIO
+import RPi.GPIO as GPIO
 
 #setup pins for buttons, define states and events
 button_Start = 38
 button_Stop =  40
-#GPIO.setup(button_Start, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
-#GPIO.setup(button_Stop, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
+GPIO.setup(button_Start, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
+GPIO.setup(button_Stop, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
 
 # assigne states and events
 STATE_INIT = 0
