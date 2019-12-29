@@ -78,9 +78,9 @@ class RobotControl_Thread(Thread):
         if(theRobotController.takeOrRelease==True):
             theRobotController.statePliers()
         # buttons change state of operations
-        if GPIO.output(button_Start, GPIO.HIGH):
+        if GPIO.input(button_Start, GPIO.HIGH):
             stateMachine(EV_START)
-        if GPIO.output(button_Stop, GPIO.HIGH):
+        if GPIO.input(button_Stop, GPIO.HIGH):
            stateMachine(EV_STOP)
 
 while (True):
