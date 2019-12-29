@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="2bbc6ac6-27c5-473b-9dcb-3f9d526bb5e9" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ProjectId" id="1VbfPZyCVLwHYR8RpVXBmWrLdyZ" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\phili\Desktop\HEI\PGA\Code" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="main_Version_Behrooz" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="Code" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/main_Version_Behrooz.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Python.main_Version_Behrooz" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="ServiceViewManager">
+    <option name="viewStates">
+      <list>
+        <serviceView>
+          <treeState>
+            <expand />
+            <select />
+          </treeState>
+        </serviceView>
+      </list>
+    </option>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="2bbc6ac6-27c5-473b-9dcb-3f9d526bb5e9" name="Default Changelist" comment="" />
+      <created>1577526692061</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1577526692061</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="414" y="194" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1577526774464">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="414" y="194" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1577526774464" />
+    <state width="1882" height="360" key="GridCell.Tab.0.bottom" timestamp="1577549751414">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1882" height="360" key="GridCell.Tab.0.bottom/0.0.1920.1080@0.0.1920.1080" timestamp="1577549751414" />
+    <state width="1882" height="360" key="GridCell.Tab.0.center" timestamp="1577549751414">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1882" height="360" key="GridCell.Tab.0.center/0.0.1920.1080@0.0.1920.1080" timestamp="1577549751414" />
+    <state width="1882" height="360" key="GridCell.Tab.0.left" timestamp="1577549751414">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1882" height="360" key="GridCell.Tab.0.left/0.0.1920.1080@0.0.1920.1080" timestamp="1577549751414" />
+    <state width="1882" height="360" key="GridCell.Tab.0.right" timestamp="1577549751414">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1882" height="360" key="GridCell.Tab.0.right/0.0.1920.1080@0.0.1920.1080" timestamp="1577549751414" />
+    <state width="1882" height="360" key="GridCell.Tab.1.bottom" timestamp="1577549751415">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1882" height="360" key="GridCell.Tab.1.bottom/0.0.1920.1080@0.0.1920.1080" timestamp="1577549751415" />
+    <state width="1882" height="360" key="GridCell.Tab.1.center" timestamp="1577549751415">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1882" height="360" key="GridCell.Tab.1.center/0.0.1920.1080@0.0.1920.1080" timestamp="1577549751415" />
+    <state width="1882" height="360" key="GridCell.Tab.1.left" timestamp="1577549751415">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1882" height="360" key="GridCell.Tab.1.left/0.0.1920.1080@0.0.1920.1080" timestamp="1577549751415" />
+    <state width="1882" height="360" key="GridCell.Tab.1.right" timestamp="1577549751415">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1882" height="360" key="GridCell.Tab.1.right/0.0.1920.1080@0.0.1920.1080" timestamp="1577549751415" />
+    <state x="461" y="181" key="SettingsEditor" timestamp="1577546263445">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="461" y="181" key="SettingsEditor/0.0.1920.1080@0.0.1920.1080" timestamp="1577546263445" />
+    <state x="656" y="362" key="com.intellij.ide.util.TipDialog" timestamp="1577609032154">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="656" y="362" key="com.intellij.ide.util.TipDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1577609032154" />
+    <state x="682" y="451" key="vcs.readOnlyHandler.ReadOnlyStatusDialog" timestamp="1577530517686">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="682" y="451" key="vcs.readOnlyHandler.ReadOnlyStatusDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1577530517686" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/Factory.py</url>
+          <line>408</line>
+          <option name="timeStamp" value="11" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+</project>
