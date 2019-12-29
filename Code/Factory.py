@@ -432,7 +432,7 @@ class RobotControl():
         self.__init__()
         self.calibrate()
         #LED turns off
-       GPIO.output(led_In_Master, GPIO.LOW)
+        GPIO.output(led_In_Master, GPIO.LOW)
 
 #-----------------------------------------------------------------------------------------------------------------------
     def getPins(self, pin =float):
