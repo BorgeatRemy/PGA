@@ -193,7 +193,7 @@ class Camera():
 
                 # calulate the position of the dice center after rotation
                 midX_rot = imageOrig_TopLeft_cornerX + vectorDistance * math.cos(vectorAngle - alpha)
-                midY_rot = height_rotated - (imageOrig_TopLeft_cornerY - vectorDistance * math.sin(vectorAngle - alpha))
+                midY_rot = imageOrig_TopLeft_cornerY - vectorDistance * math.sin(vectorAngle - alpha)
 
                 # distance to the center of the dice from the middle of the image
                 deltaX = midX_rot - width_rotated / 2
