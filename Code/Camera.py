@@ -24,7 +24,7 @@ class Camera():
         self.robotController = robotController
     def capture(self):
         camera = PiCamera()
-        i++;
+        i = i+1
         camera.resolution = (1024, 768)
         camera.start_preview()
         sleep(2)
