@@ -4,8 +4,8 @@ import binascii
 import struct
 import math
 import array
-import RPi.GPIO as GPIO
-
+#import RPi.GPIO as GPIO
+global newX, newY, newZ, newRx, newRy, newRz, objX, objY, objZ, binX, binY, binZ, pinceHeight , evFound , evSearch, evPass, evZone,lastZone, BorderReached
 pinceHeight =0
 xMax=0
 xMin=0
@@ -23,6 +23,9 @@ yMidPoint=0
 zMidPoint =0
 ZeroReached=0
 MaxReached=0
+BorderReached =0
+dX = 0.150
+dY = 0.133
 pinceOut1=0
 pinceOut2=0
 pinceIn1=0
@@ -122,17 +125,20 @@ class RobotControl():
         zMidPoint = 0.250
 
         zAve = 300
-        dX = 0.05  # a fraction of |xMax|
-        dY = 0.05 # a fraction of |yMin|
+        dX = 0.15  # a fraction of |xMax|
+        dY = 0.133 # a fraction of |yMin|
         dZ = 0.0
-        global ZeroReached, MaxReached
+        global ZeroReached, MaxReached, BorderReached,evZone, lastZone
         ZeroReached = -0.555
         MaxReached = -0.555
+        evZone = 1
+        lastZone = 1
+        BorderReached = 0
 
-
-        self.xSearch = 0.388
-        self.ySearch = -0.388
-        self.zSearch = 0.3
+        BorderReached = 0
+        self.xSearch = 0
+        self.ySearch = -0.3
+        self.zSearch = 0.15
         self.rzSearch = 0
 
 
@@ -346,7 +352,9 @@ class RobotControl():
 
 #-----------------------------------------------------------------------------------------------------------------------
     def master(self,event):
-        global xMin,yMin,zMin,xMax,yMax,zMax,MaxReached,ZeroReached, dX,dY
+        global xSearch,ySearch,zSearch, rzSearch,xMin,yMin,zMin,xMax,yMax,zMax,MaxReached,ZeroReached, dX,dY ,evZone, lastZone ,BorderReached
+        yMinSearch = -0.399
+        yMaxSearch = 0
         #LED shows this part of the code is executed
         #GPIO.output(master, GPIO.HIGH)
 
@@ -383,21 +391,90 @@ class RobotControl():
         # States operations
         if self.oldState != self.state:
             if self.state == ST_BEGIN_SEARCH:
-                if MaxReached < yMax:
-                    self.ySearch = self.ySearch + 0.1
-                    MaxReached = MaxReached + 0.1
-                    if MaxReached >= yMax:  # set new value for x
-                        self.xSearch = self.xSearch - 0.1
-                        ZeroReached = MaxReached
+                #if MaxReached < yMax:
+                 #   self.ySearch = self.ySearch + 0.1
+                 #   MaxReached = MaxReached + 0.1
+                  #  if MaxReached >= yMax:  # set new value for x
+                   #     self.xSearch = self.xSearch - 0.1
+                    #    ZeroReached = MaxReached
 
                 # define new value for y in negative direction
-                if ZeroReached > yMin:
-                    self.ySearch = self.ySearch - 0.1
-                    ZeroReached = ZeroReached - 0.1
-                    if ZeroReached <= yMin:  # set new value for x
-                        self.xSearch = self.xSearch - 0.1
-                        MaxReached = ZeroReached
-                self.moveToPosition(self.xSearch, self.ySearch, self.zSearch, self.rzSearch)
+               # if ZeroReached > yMin:
+                #    self.ySearch = self.ySearch - 0.1
+                 #   ZeroReached = ZeroReached - 0.1
+                  #  if ZeroReached <= yMin:  # set new value for x
+                   #     self.xSearch = self.xSearch - 0.1
+                    #    MaxReached = ZeroReached
+                #self.moveToPosition(self.xSearch, self.ySearch, self.zSearch, self.rzSearch)
+				
+                BorderReached = self.xSearch
+                # go to zone 1 , zone one is the centeral part of the table
+                if (BorderReached ==0 and self.ySearch == -0.300) :
+                   evZone = 1
+
+                # go to zone 2, zone two is the right part of the table
+                if evZone == 1 and self.ySearch == yMinSearch :
+                    evZone =2
+                # go to zone 3, zone three is the left part of the table
+                if ZeroReached <= (yMinSearch - dY) and BorderReached == 0.300:
+                    evZone = 3
+                    
+                if (BorderReached == -0.300 and ZeroReached <= (yMinSearch - dY)):
+                    print("search is complete")
+                
+                #Zone 1
+                if evZone ==1:
+                    if self.xSearch ==0 and self.ySearch == -0.150:
+                        self.ySearch = yMinSearch
+                    else :
+                        self.ySearch = -0.150
+
+                #Zone 2
+                if evZone == 2:
+                    #initialize the search in this zone
+                    if lastZone ==1:
+                        self.xSearch = dX
+                        self.ySearch = yMinSearch
+                        MaxReached = yMinSearch
+                    # search in positive direction of y
+                    if MaxReached <=  yMaxSearch  and lastZone == evZone:
+                        self.ySearch = self.ySearch + dY
+                        MaxReached = MaxReached + dY
+                        if MaxReached >  yMaxSearch :      # set new value for x
+                            self.xSearch = self.xSearch + dX
+                            ZeroReached =  yMaxSearch
+
+                   # define new value for y in negative direction
+                    if ZeroReached >= yMinSearch and lastZone == evZone :
+                        self.ySearch = self.ySearch - dY
+                        ZeroReached = ZeroReached - dY
+                        if ZeroReached < (yMinSearch - dY):     # set new value for x
+                            self.xSearch = self.xSearch + dX
+                            MaxReached = yMinSearch
+
+                #Zone 3
+                if evZone == 3:
+                    # initialize the search in this zone
+                    if lastZone == 2:
+                        self.xSearch = -dX
+                        self.ySearch = yMinSearch
+                        MaxReached = yMinSearch
+                    # search in positive direction of y
+                    if MaxReached <=  yMaxSearch  and lastZone == evZone:
+                        self.ySearch = self.ySearch + dY
+                        MaxReached = MaxReached + dY
+                        if MaxReached >  yMaxSearch :  # set new value for x
+                            self.xSearch = self.xSearch - dX
+                            ZeroReached =  yMaxSearch
+                    # define new value for y in negative direction
+                    if ZeroReached >= yMinSearch and lastZone == evZone:
+                        self.ySearch = self.ySearch - dY
+                        ZeroReached = ZeroReached - dY
+                        if ZeroReached < (yMinSearch - dY):  # set new value for x
+                            self.xSearch = self.xSearch - dX
+                            MaxReached = yMinSearch
+
+                lastZone = evZone				
 
                 # camera : can begin his job, in case finding object call setObject(), in setObject evFound change state
                 # if not finding it changes evPass state to authorize go to another point to repeat this process
@@ -437,7 +514,7 @@ class RobotControl():
 #-----------------------------------------------------------------------------------------------------------------------
     def getPins(self, pin =float):
         state = GPIO.gpio_function(pin)
-        print (state)
+        print(state)
 
 #-----------------------------------------------------------------------------------------------------------------------
     def getPosition(self):
