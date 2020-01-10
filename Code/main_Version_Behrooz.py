@@ -1,4 +1,5 @@
 from Factory import RobotControl
+from Camera import Camera
 from threading import Thread
 from threading import Timer
 import math
@@ -28,6 +29,11 @@ def getData():
     obj2.join()
 if __name__ == "__main__":
     theRobotController = RobotControl()
+
+    theCamera = Camera()
+    theCamera.initRelation(theRobotController)
+
+
    # theRobotController.calibrate()
     i = 0
     theRobotController.nextX = 100

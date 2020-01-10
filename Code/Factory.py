@@ -172,7 +172,11 @@ class RobotControl():
         self.state = ST_INIT
         self.oldState = ST_INIT
 
+        self.theCamera = None
 
+# -----------------------------------------------------------------------------------------------------------------------
+    def initRelations(self,theCamera):
+        self.theCamera = theCamera
 #-----------------------------------------------------------------------------------------------------------------------
     def calibrate(self):
         HOST = self.host
@@ -370,7 +374,7 @@ class RobotControl():
                 win = 1
             elif event == EV_FOUND:
                 self.state = ST_GOXY
-            else:
+            elif event == EV_NOT_FOUND:
                 self.state = ST_BEGIN_SEARCH
         elif self.state == ST_GOXY:
             if event == EV_IN_POS:
@@ -481,7 +485,8 @@ class RobotControl():
 
                 # define conditions to move in +y direction
                 # define new value for y in positive direction
-
+            elif self.state == ST_END_SEARCH:
+                self.theCamera.cameraDetectionDice()
             elif self.state == ST_GOXY:
                 self.moveToPosition(self.object_posX, self.object_posY, self.posz, self.rzSearch)
             elif self.state == ST_DOWN:
