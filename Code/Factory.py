@@ -481,13 +481,13 @@ class RobotControl():
                 self.moveToPosition(self.object_posX, self.object_posY, self.posz, self.rz)
             elif self.state == ST_DOWN:
                 print("posx,y okay")
-                self.object_posZ = 0.05
+                self.object_posZ = 0.09
                 self.moveToPosition(self.posx,self.posy,self.object_posZ,self.rz)
             elif self.state == ST_GRAB:
                 self.adjustPince(True)
                 self.takeOrRelease = True
             elif self.state == ST_UP:
-                self.object_posZ = 0.100
+                self.object_posZ = 0.2
                 self.moveToPosition(self.posx,self.posy,self.object_posZ,self.rz)
             elif self.state == ST_THROW:
                 self.adjustPince(False)
