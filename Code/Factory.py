@@ -365,7 +365,8 @@ class RobotControl():
         self.oldState = self.state
         # State machine changes
         if self.state == ST_INIT:
-            self.state = ST_BEGIN_SEARCH
+            if event==EV_INIT:
+                self.state = ST_BEGIN_SEARCH
         elif self.state == ST_BEGIN_SEARCH:
             if event == EV_IN_POS:
                 self.state = ST_END_SEARCH
