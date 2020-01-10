@@ -181,10 +181,10 @@ class Camera():
                 imageOrig_TopLeft_cornerY= 0
 
                 # calculcate the postion of the top left corner of the image after rotation
-                if alpha_deg > 0 and alpha_deg < 180:
-                    imageOrig_TopLeft_cornerX_m = math.sin(alpha) * height
-                elif alpha_deg < 0 and alpha_deg > -180:
-                    imageOrig_TopLeft_cornerY_m = -math.sin(alpha) * width
+                if self.angleRot_deg > 0 and self.angleRot_deg < 180:
+                    imageOrig_TopLeft_cornerX = math.sin(alpha) * height
+                elif self.angleRot_deg < 0 and self.angleRot_deg > -180:
+                    imageOrig_TopLeft_cornerY = -math.sin(alpha) * width
 
                 # calulate the position of the dice center after rotation
                 midX_rot = imageOrig_TopLeft_cornerX + vectorDistance * math.cos(vectorAngle - alpha)
