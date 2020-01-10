@@ -44,7 +44,7 @@ EV_UP = 6
 EV_RELEASE = 7
 EV_POS_Z = 8
 EV_NOT_FOUND = 9
-
+EV_IN_POS_OBJECT = 10
 
 ST_INIT = 0
 ST_BEGIN_SEARCH = 1
@@ -267,7 +267,7 @@ class RobotControl():
             s.close()
             if (self.posx < (self.object_posX + 0.01) and self.posx > (self.object_posX - 0.01) ):
                 if(self.posy < (self.object_posY + 0.01) and self.posy > (self.object_posY - 0.01)):
-                    self.master(EV_IN_POS)
+                    self.master(EV_IN_POS_OBJECT)
                     if (self.posz < (self.object_posZ + 0.01) and self.posz > (self.object_posZ - 0.01)):
                         self.master(EV_POS_Z)
             if (self.posx < (self.xSearch + 0.01) and self.posx > (self.xSearch - 0.01)):
@@ -379,7 +379,7 @@ class RobotControl():
             elif event == EV_NOT_FOUND:
                 self.state = ST_BEGIN_SEARCH
         elif self.state == ST_GOXY:
-            if event == EV_IN_POS:
+            if event == EV_IN_POS_OBJECT:
                 self.state = ST_DOWN
         elif self.state == ST_DOWN:
             if event == EV_POS_Z:
