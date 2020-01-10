@@ -1,5 +1,6 @@
 from scipy.spatial import distance as dist
 from Factory import RobotControl
+import Factory
 from imutils import perspective
 from imutils import contours
 import numpy as np
