@@ -146,8 +146,8 @@ class Camera():
 
             # compute the midpoint between the top-left and top-right points,
             # followed by the midpoint between the top-righ and bottom-right
-            (tlblX, tlblY) = midpoint(tl, bl)
-            (trbrX, trbrY) = midpoint(tr, br)
+            (tlblX, tlblY) = self.midpoint(tl, bl)
+            (trbrX, trbrY) = self.midpoint(tr, br)
 
             # compute the Euclidean distance between the midpoints
             dA = dist.euclidean((tltrX, tltrY), (blbrX, blbrY))
