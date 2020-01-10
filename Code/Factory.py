@@ -60,7 +60,7 @@ state = 0
 oldState = 0
 event = 0
 
-CAMERA_DISTANCE = 0.05
+CAMERA_DISTANCE = 0.04
 
 taken = 0
 class RobotControl():
@@ -300,7 +300,7 @@ class RobotControl():
         global pinceHeight,xMax,yMax,zMax,xMin,yMin,zMin
         self.object_posX = self.posx + dx
         self.object_posY = self.posy + CAMERA_DISTANCE +dy
-
+        print(str(self.posx))
         self.object_Rz = self.rz + rz
 
         # should control what is the smallest and biggest reachable coordinates (for an object allowable position)

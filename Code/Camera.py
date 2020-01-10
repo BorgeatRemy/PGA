@@ -49,7 +49,7 @@ class Camera():
             else:
                 #generate evFound
                 print("dice found, not 6")
-                self.robotController.setObjectPosition(self.deltaX_m*1000,self.deltaY_m*1000,self.angleRot_deg)
+                self.robotController.setObjectPosition(self.deltaX_m,self.deltaY_m,self.angleRot_deg)
                 print("(dx,dy): " + str(self.deltaX_m*1000) + ":" + str(self.deltaY_m*1000))
                 self.robotController.master(1)
         else:
