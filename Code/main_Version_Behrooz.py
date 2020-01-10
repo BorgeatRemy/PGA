@@ -10,6 +10,7 @@ button_Start = 29
 button_Stop = 22
 GPIO.setmode(GPIO.BOARD)
 GPIO.setup(button_Start, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
+GPIO.setup(12, GPIO.OUT, initial=GPIO.HIGH)
 GPIO.setup(button_Stop, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
 print("hello les amis")
 # assigne states and events
@@ -79,7 +80,6 @@ class RobotControl_Thread(Thread):
     def run(self):
         global i
         i+=1
-        print("hello")
         theRobotController.updateCurrentPosition()
         if(theRobotController.takeOrRelease==True):
             theRobotController.statePliers()
