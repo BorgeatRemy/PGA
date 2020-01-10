@@ -4,7 +4,7 @@ import binascii
 import struct
 import math
 import array
-#import RPi.GPIO as GPIO
+import RPi.GPIO as GPIO
 global newX, newY, newZ, newRx, newRy, newRz, objX, objY, objZ, binX, binY, binZ, pinceHeight , evFound , evSearch, evPass, evZone,lastZone, BorderReached
 pinceHeight =0
 xMax=0
