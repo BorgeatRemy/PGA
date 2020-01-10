@@ -195,8 +195,8 @@ class Camera():
                 deltaY = midY_rot - height_rotated / 2
 
                 # distance to the center of the dice from the middle of the image in meter
-                self.deltaX_m = round(deltaX / (1000 * pixelsPerMetric), 3)
-                self.deltaY_m = round(deltaY / (1000 * pixelsPerMetric), 3)
+                self.deltaX_m = round(deltaX / (1000 * self.pixelsPerMeter), 3)
+                self.deltaY_m = round(deltaY / (1000 * self.pixelsPerMeter), 3)
 
                 # crop the image to keep only the dice
                 img_crop = rotated[int(midY_rot - dB / 2) + 15:int(midY_rot + dB / 2) - 15,
