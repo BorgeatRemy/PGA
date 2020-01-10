@@ -174,7 +174,7 @@ class Camera():
                 vectorDistance = dist.euclidean((0, 0), (midX, midY))
 
                 # rotate the entire image and keep the whole picture
-                rotated = imutils.rotate_bound(image, self.alpha_deg)
+                rotated = imutils.rotate_bound(image, self.angleRot_deg)
                 width_rotated, height_rotated, channel_rotated = rotated.shape
 
                 imageOrig_TopLeft_cornerX= 0
