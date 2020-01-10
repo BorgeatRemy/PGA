@@ -79,6 +79,7 @@ class RobotControl_Thread(Thread):
     def run(self):
         global i
         i+=1
+        print("hello")
         theRobotController.updateCurrentPosition()
         if(theRobotController.takeOrRelease==True):
             theRobotController.statePliers()
