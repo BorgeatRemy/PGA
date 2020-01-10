@@ -35,7 +35,7 @@ class Camera():
         print("take picture")
         self.capture()
         print("picture taken")
-        self.imgCrop = self.foundDice("/home/pi/Documents/imageToAnalyse%s.jpg",16)
+        self.imgCrop = self.foundDice("/home/pi/Documents/imageToAnalyse.jpg",16)
 
         if(self.imgCrop is not None) :
             print("dice found")
