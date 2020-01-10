@@ -197,8 +197,8 @@ class Camera():
                 midY_rot = imageOrig_TopLeft_cornerY - vectorDistance * math.sin(vectorAngle - alpha)
 
                 # distance to the center of the dice from the middle of the image
-                deltaX = midX_rot - width_rotated / 2
-                deltaY = midY_rot - height_rotated / 2
+                deltaX = midX_rot - height_rotated / 2
+                deltaY = midY_rot - width_rotated / 2
 
                 # distance to the center of the dice from the middle of the image in meter
                 self.deltaX_m = round(deltaX / (1000 * self.pixelsPerMeter), 3)
