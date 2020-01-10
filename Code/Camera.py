@@ -15,6 +15,7 @@ class Camera():
     def __init__(self):
         self.deltaX_m = 0
         self.deltaY_m = 0
+        self.i = 0
         self.angleRot_deg = 0
         self.pixelsPerMeter = None
         self.imgCrop = None
@@ -23,10 +24,11 @@ class Camera():
         self.robotController = robotController
     def capture(self):
         camera = PiCamera()
+        i++;
         camera.resolution = (1024, 768)
         camera.start_preview()
         sleep(2)
-        camera.capture("/home/pi/Documents/imageToAnalyse.jpg")
+        camera.capture("/home/pi/Documents/imageToAnalyse%s.jpg"%i)
         camera.stop_preview()
 
     def cameraDetectionDice(self):
