@@ -475,6 +475,7 @@ class RobotControl():
                 # define conditions to move in +y direction
                 # define new value for y in positive direction
             elif self.state == ST_END_SEARCH:
+                print("End Search")
                 self.theCamera.cameraDetectionDice()
             elif self.state == ST_GOXY:
                 self.moveToPosition(self.object_posX, self.object_posY, self.posz, self.rzSearch)

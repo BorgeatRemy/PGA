@@ -29,21 +29,26 @@ class Camera():
 
     def cameraDetectionDice(self):
         numberDice = 0
+        print("take picture")
         self.capture()
-
+        print("picture taken")
         self.imgCrop = self.foundDice("/home/pi/Documents/imageToAnalyse.jpg",16)
 
         if(self.imgCrop is not None) :
+            print("dice found")
             numberDice = self.detectNumberOnDice(self.imgCrop,self.pixelsPerMeter)
             if(numberDice == 6):
                 #generate ev6
+                print("6 found")
                 self.robotController.master(EV_SIX)
             else:
                 #generate evFound
+                print("dice found, not 6")
                 self.robotController.setObjectPosition(self.deltaX_m,self.deltaY_m,self.angleRot_deg)
                 self.robotController.master(EV_FOUND)
         else:
             #generate event evNotFound
+            print("dice dice not found")
             self.robotController.master(EV_NOT_FOUND)
 
     def detectNumberOnDice(self,image, pixelsperMetrics):
