@@ -65,8 +65,10 @@ class Camera():
         # search the circle in the image, search circle with radius between 1 and 2mm
         circles = cv2.HoughCircles(grayFilter, cv2.HOUGH_GRADIENT, 1, 50, param1=50, param2=30,
                                    minRadius=int(self.pixelsPerMeter), maxRadius=int(2 * self.pixelsPerMeter))
-        circles = np.uint16(np.around(circles))
-
+        if(circles is not None) :
+            circles = np.uint16(np.around(circles))
+        else :
+            print("circles null")
         # count the circles
         for i in circles[0, :]:
             nCircles += 1
