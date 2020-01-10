@@ -23,6 +23,7 @@ class Camera():
         self.robotController = robotController
     def capture(self):
         camera = PiCamera()
+        camera.resolution = (1024, 768)
         camera.start_preview()
         sleep(2)
         camera.capture("/home/pi/Documents/imageToAnalyse.jpg")
