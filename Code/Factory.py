@@ -358,8 +358,8 @@ class RobotControl():
         global xSearch,ySearch,zSearch, rzSearch,xMin,yMin,zMin,xMax,yMax,zMax,MaxReached,ZeroReached, dX,dY ,evZone, lastZone ,BorderReached
         yMinSearch = -0.399
         yMaxSearch = -0.100
-        dX = 0.100
-        dY = 0.100
+        dX = 0.05
+        dY = 0.05
         #LED shows this part of the code is executed
         #GPIO.output(master, GPIO.HIGH)
 
@@ -487,7 +487,7 @@ class RobotControl():
                 self.adjustPince(True)
                 self.takeOrRelease = True
             elif self.state == ST_UP:
-                self.object_posZ = 0.06
+                self.object_posZ = 0.100
                 self.moveToPosition(self.posx,self.posy,self.object_posZ,self.rz)
             elif self.state == ST_THROW:
                 self.adjustPince(False)
