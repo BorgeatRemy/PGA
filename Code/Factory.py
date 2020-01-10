@@ -478,9 +478,9 @@ class RobotControl():
                 print("End Search")
                 self.theCamera.cameraDetectionDice()
             elif self.state == ST_GOXY:
-                self.moveToPosition(self.object_posX, self.object_posY, self.posz, self.rzSearch)
+                self.moveToPosition(self.object_posX, self.object_posY, self.posz, self.rz)
             elif self.state == ST_DOWN:
-                self.object_posZ = 0.02
+                self.object_posZ = 0.05
                 self.moveToPosition(self.posx,self.posy,self.object_posZ,self.rz)
             elif self.state == ST_GRAB:
                 self.adjustPince(True)
