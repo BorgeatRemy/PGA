@@ -33,7 +33,7 @@ if __name__ == "__main__":
 
     theCamera = Camera()
     theCamera.initRelation(theRobotController)
-
+    theRobotController.initRelations(theCamera)
 
    # theRobotController.calibrate()
     i = 0

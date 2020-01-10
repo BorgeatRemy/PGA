@@ -36,7 +36,7 @@ class Camera():
 
         if(self.imgCrop is not None) :
             print("dice found")
-            numberDice = self.detectNumberOnDice(self.imgCrop,self.pixelsPerMeter)
+            numberDice = self.detectNumberOnDice(self.imgCrop)
             if(numberDice == 6):
                 #generate ev6
                 print("6 found")
@@ -51,7 +51,7 @@ class Camera():
             print("dice dice not found")
             self.robotController.master(EV_NOT_FOUND)
 
-    def detectNumberOnDice(self,image, pixelsperMetrics):
+    def detectNumberOnDice(self,image):
         nCircles = 0
         height, width, channel = image.shape
 
@@ -61,7 +61,7 @@ class Camera():
 
         # search the circle in the image, search circle with radius between 1 and 2mm
         circles = cv2.HoughCircles(grayFilter, cv2.HOUGH_GRADIENT, 1, 50, param1=50, param2=30,
-                                   minRadius=int(pixelsperMetrics), maxRadius=int(2 * pixelsperMetrics))
+                                   minRadius=int(self.pixelsPerMeter), maxRadius=int(2 * self.pixelsPerMeter))
         circles = np.uint16(np.around(circles))
 
         # count the circles
