@@ -298,7 +298,7 @@ class RobotControl():
     # define position of  object
     def setObjectPosition(self, dx = float, dy = float, rz = float):
         global pinceHeight,xMax,yMax,zMax,xMin,yMin,zMin
-        self.object_posX = self.posx + dx
+        self.object_posX = self.posx + dx - 0.002
         self.object_posY = self.posy - CAMERA_DISTANCE - dy
         self.object_Rz = self.rz #+ rz
 
