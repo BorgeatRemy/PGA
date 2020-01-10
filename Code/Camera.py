@@ -15,28 +15,27 @@ class Camera():
     def __init__(self):
         self.deltaX_m = 0
         self.deltaY_m = 0
-        self.i = 0
         self.angleRot_deg = 0
         self.pixelsPerMeter = None
         self.imgCrop = None
         self.robotController = None
+        self.camera = None
     def initRelation(self,robotController):
         self.robotController = robotController
+        self.camera = PiCamera()
     def capture(self):
-        camera = PiCamera()
-        self.i = self.i+1
-        camera.resolution = (1024, 768)
+        self.camera.resolution = (1024, 768)
         camera.start_preview()
         sleep(2)
-        camera.capture("/home/pi/Documents/imageToAnalyse%s.jpg"%self.i)
-        camera.stop_preview()
+        self.camera.capture("/home/pi/Documents/imageToAnalyse.jpg")
+        self.camera.stop_preview()
 
     def cameraDetectionDice(self):
         numberDice = 0
         print("take picture")
         self.capture()
         print("picture taken")
-        self.imgCrop = self.foundDice("/home/pi/Documents/imageToAnalyse%s.jpg"%self.i,16)
+        self.imgCrop = self.foundDice("/home/pi/Documents/imageToAnalyse%s.jpg",16)
 
         if(self.imgCrop is not None) :
             print("dice found")
