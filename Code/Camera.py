@@ -27,7 +27,7 @@ class Camera():
         self.camera.resolution = (3280, 2464)
         self.camera.start_preview()
         sleep(2)
-        self.camera.capture("/home/pi/Documents/imageToAnalyse.jpg")
+        self.camera.capture("/home/pi/PGA/imageToAnalyse.jpg")
         self.camera.stop_preview()
 
     def cameraDetectionDice(self):
@@ -35,7 +35,7 @@ class Camera():
         print("take picture")
         self.capture()
         print("picture taken")
-        self.imgCrop = self.foundDice("/home/pi/Documents/imageToAnalyse.jpg",16)
+        self.imgCrop = self.foundDice("/home/pi/PGA/imageToAnalyse.jpg",16)
 
 
         if(self.imgCrop is not None) :
