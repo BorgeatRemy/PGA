@@ -25,7 +25,7 @@ class Camera():
         self.camera = PiCamera()
     def capture(self):
         self.camera.resolution = (1024, 768)
-        camera.start_preview()
+        self.camera.start_preview()
         sleep(2)
         self.camera.capture("/home/pi/Documents/imageToAnalyse.jpg")
         self.camera.stop_preview()
