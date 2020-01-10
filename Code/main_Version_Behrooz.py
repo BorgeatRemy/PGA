@@ -6,8 +6,8 @@ import math
 import RPi.GPIO as GPIO
 
 #setup pins for buttons, define states and events
-button_Start = 38
-button_Stop =  40
+button_Start = 29
+button_Stop = 22
 GPIO.setmode(GPIO.BOARD)
 GPIO.setup(button_Start, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
 GPIO.setup(button_Stop, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
