@@ -16,8 +16,6 @@ class Camera():
         self.deltaY_m = 0
         self.angleRot_deg = 0
         self.pixelsPerMeter = None
-        self.oldStateCamera = ST_INIT
-        self.stateCamera = ST_INIT
         self.imgCrop = None
         self.robotController = None
     def initRelation(self,robotController):
@@ -33,7 +31,7 @@ class Camera():
         numberDice = 0
         self.capture()
 
-        self.imgCrop = self.foundDice(self,"/home/pi/Documents/imageToAnalyse.jpg",16)
+        self.imgCrop = self.foundDice("/home/pi/Documents/imageToAnalyse.jpg",16)
 
         if(self.imgCrop is not None) :
             numberDice = self.detectNumberOnDice(self.imgCrop,self.pixelsPerMeter)
