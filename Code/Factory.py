@@ -398,6 +398,7 @@ class RobotControl():
         # States operations
         if self.oldState != self.state:
             if self.state == ST_BEGIN_SEARCH:
+                print("Begin Search")
                 self.moveToPosition(self.xSearch, self.ySearch, self.zSearch, self.rzSearch)
 
                 BorderReached = self.xSearch
