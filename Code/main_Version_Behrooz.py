@@ -73,7 +73,7 @@ def stateMachine(ev=int):
 class RobotControl_Thread(Thread):
     def __init__(self):
         Thread.__init__(self)
-        #stateMachine(EV_INIT)
+        stateMachine(EV_INIT)
         theRobotController.updateCurrentPosition()
         theRobotController.master(EV_INIT)
 
@@ -85,10 +85,11 @@ class RobotControl_Thread(Thread):
             theRobotController.statePliers()
         # buttons change state of operations
         if GPIO.input(button_Start):
-            stateMachine(EV_START)
+		stateMachine(EV_START)
+		print("start")
         if GPIO.input(button_Stop):
            stateMachine(EV_STOP)
-
+	   print("stop")
 while (True):
     t = Timer(0.5,getData)
     t.start()
