@@ -399,7 +399,6 @@ class RobotControl():
         if self.oldState != self.state:
             if self.state == ST_BEGIN_SEARCH:
                 print("Begin Search")
-                self.moveToPosition(self.xSearch, self.ySearch, self.zSearch, self.rzSearch)
 
                 BorderReached = self.xSearch
                 # go to zone 1 , zone one is the centeral part of the table
@@ -470,6 +469,7 @@ class RobotControl():
 
                 lastZone = evZone
 
+                self.moveToPosition(self.xSearch, self.ySearch, self.zSearch, self.rzSearch)
                 # camera : can begin his job, in case finding object call setObject(), in setObject evFound change state
                 # if not finding it changes evPass state to authorize go to another point to repeat this process
 
