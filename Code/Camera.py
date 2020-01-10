@@ -37,8 +37,10 @@ class Camera():
         print("picture taken")
         self.imgCrop = self.foundDice("/home/pi/Documents/imageToAnalyse.jpg",16)
 
+
         if(self.imgCrop is not None) :
             print("dice found")
+            cv2.imwrite("/home/pi/PGA/Code/crop.jpg", self.imgCrop)
             numberDice = self.detectNumberOnDice(self.imgCrop)
             if(numberDice == 6):
                 #generate ev6
@@ -208,6 +210,5 @@ class Camera():
                 return img_crop
 
         # dont find dice
-        cv2.imwrite("C:/Users/rebor/PycharmProjects/PGA/orig.jpg", orig)
         return None
 
