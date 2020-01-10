@@ -20,7 +20,7 @@ EV_INIT = 0
 EV_START = 1
 EV_STOP = 2
 
-state = 0
+state = STATE_INIT
 oldState = 0
 def getData():
     obj2 = RobotControl_Thread()
@@ -73,7 +73,6 @@ def stateMachine(ev=int):
 class RobotControl_Thread(Thread):
     def __init__(self):
         Thread.__init__(self)
-        stateMachine(EV_INIT)
         theRobotController.updateCurrentPosition()
         theRobotController.master(EV_INIT)
 
