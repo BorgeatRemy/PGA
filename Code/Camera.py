@@ -41,16 +41,16 @@ class Camera():
             if(numberDice == 6):
                 #generate ev6
                 print("6 found")
-                self.robotController.master(EV_SIX)
+                self.robotController.master(2)
             else:
                 #generate evFound
                 print("dice found, not 6")
                 self.robotController.setObjectPosition(self.deltaX_m,self.deltaY_m,self.angleRot_deg)
-                self.robotController.master(EV_FOUND)
+                self.robotController.master(1)
         else:
             #generate event evNotFound
             print("dice dice not found")
-            self.robotController.master(EV_NOT_FOUND)
+            self.robotController.master(9)
 
     def detectNumberOnDice(self,image):
         nCircles = 0
