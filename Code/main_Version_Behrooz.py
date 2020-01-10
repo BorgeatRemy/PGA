@@ -84,11 +84,11 @@ class RobotControl_Thread(Thread):
             theRobotController.statePliers()
         # buttons change state of operations
         if GPIO.input(button_Start):
-			stateMachine(EV_START)
-			print("start")
+            stateMachine(EV_START)
+            print("start")
         if GPIO.input(button_Stop):
-			stateMachine(EV_STOP)
-			print("stop")
+            stateMachine(EV_STOP)
+            print("stop")
 while (True):
     t = Timer(0.5,getData)
     t.start()
