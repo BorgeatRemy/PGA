@@ -159,7 +159,7 @@ class Camera():
             dA = dist.euclidean((tltrX, tltrY), (blbrX, blbrY))
             dB = dist.euclidean((tlblX, tlblY), (trbrX, trbrY))
 
-            if dA < dB + 6 and dA > dB - 6:  # dice seen right above it
+            if dA < dB + 10 and dA > dB - 10:  # dice seen right above it
 
                 # if the pixels per metric has not been initialized, then
                 # compute it as the ratio of pixels to supplied metric
