@@ -69,11 +69,12 @@ class Camera():
                                    minRadius=int(self.pixelsPerMeter), maxRadius=int(2 * self.pixelsPerMeter))
         if(circles is not None) :
             circles = np.uint16(np.around(circles))
+            for i in circles[0, :]:
+                nCircles += 1
         else :
             print("circles null")
         # count the circles
-        for i in circles[0, :]:
-            nCircles += 1
+
 
         return nCircles
 
