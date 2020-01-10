@@ -7,6 +7,10 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+    <option name="UPDATE_TYPE" value="MERGE" />
+  </component>
   <component name="ProjectId" id="1VbfPZyCVLwHYR8RpVXBmWrLdyZ" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -117,10 +121,14 @@
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="461" y="181" key="SettingsEditor/0.0.1920.1080@0.0.1920.1080" timestamp="1577546263445" />
-    <state x="656" y="362" key="com.intellij.ide.util.TipDialog" timestamp="1577609032154">
+    <state x="656" y="362" key="com.intellij.ide.util.TipDialog" timestamp="1578642105032">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="656" y="362" key="com.intellij.ide.util.TipDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1577609032154" />
+    <state x="656" y="362" key="com.intellij.ide.util.TipDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1578642105032" />
+    <state x="1249" y="459" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1578642191428">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="1249" y="459" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1920.1080@0.0.1920.1080" timestamp="1578642191428" />
     <state x="682" y="451" key="vcs.readOnlyHandler.ReadOnlyStatusDialog" timestamp="1577530517686">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
