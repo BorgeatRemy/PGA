@@ -94,13 +94,11 @@ class Camera():
         edged = cv2.dilate(edged, None, iterations=1)
         edged = cv2.erode(edged, None, iterations=1)
 
+        cv2.imwrite("/home/pi/PGA/Code/Edged.jpg",edged)
 
         # find contours in the edge map
         cnts = cv2.findContours(edged.copy(), cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
         cnts = imutils.grab_contours(cnts)
-
-        # sort the contours from left-to-right and initialize the
-        (cnts, _) = contours.sort_contours(cnts)
 
         # 'pixels per metric' calibration variable
         pixelsPerMetric = None
