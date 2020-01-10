@@ -87,8 +87,8 @@ class RobotControl_Thread(Thread):
 			stateMachine(EV_START)
 			print("start")
         if GPIO.input(button_Stop):
-           stateMachine(EV_STOP)
-		   print("stop")
+			stateMachine(EV_STOP)
+			print("stop")
 while (True):
     t = Timer(0.5,getData)
     t.start()
