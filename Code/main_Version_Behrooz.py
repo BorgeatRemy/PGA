@@ -75,7 +75,6 @@ class RobotControl_Thread(Thread):
     def __init__(self):
         Thread.__init__(self)
         theRobotController.updateCurrentPosition()
-        theRobotController.master(EV_INIT)
 
     def run(self):
         global i
