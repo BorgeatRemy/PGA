@@ -11,7 +11,7 @@ button_Stop = 22
 GPIO.setmode(GPIO.BOARD)
 GPIO.setup(button_Start, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
 GPIO.setup(button_Stop, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
-
+print("hello les amis")
 # assigne states and events
 STATE_INIT = 0
 STATE_START = 1
