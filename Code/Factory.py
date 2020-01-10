@@ -480,6 +480,7 @@ class RobotControl():
             elif self.state == ST_GOXY:
                 self.moveToPosition(self.object_posX, self.object_posY, self.posz, self.rz)
             elif self.state == ST_DOWN:
+                print("posx,y okay")
                 self.object_posZ = 0.05
                 self.moveToPosition(self.posx,self.posy,self.object_posZ,self.rz)
             elif self.state == ST_GRAB:
