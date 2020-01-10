@@ -24,11 +24,11 @@ class Camera():
         self.robotController = robotController
     def capture(self):
         camera = PiCamera()
-        i = i+1
+        self.i = self.i+1
         camera.resolution = (1024, 768)
         camera.start_preview()
         sleep(2)
-        camera.capture("/home/pi/Documents/imageToAnalyse%s.jpg"%i)
+        camera.capture("/home/pi/Documents/imageToAnalyse%s.jpg"%self.i)
         camera.stop_preview()
 
     def cameraDetectionDice(self):
