@@ -73,6 +73,9 @@ class Camera():
 
         return nCircles
 
+    def midpoint(self,ptA, ptB):
+        return ((ptA[0] + ptB[0]) * 0.5, (ptA[1] + ptB[1]) * 0.5)
+
     def foundDice(self,imagePath, width_object):
         image = cv2.imread(imagePath)
 
@@ -138,8 +141,8 @@ class Camera():
             # between the top-left and top-right coordinates, followed by
             # the midpoint between bottom-left and bottom-right coordinates
             (tl, tr, br, bl) = box
-            (tltrX, tltrY) = midpoint(tl, tr)
-            (blbrX, blbrY) = midpoint(bl, br)
+            (tltrX, tltrY) = self.midpoint(tl, tr)
+            (blbrX, blbrY) = self.midpoint(bl, br)
 
             # compute the midpoint between the top-left and top-right points,
             # followed by the midpoint between the top-righ and bottom-right
@@ -205,5 +208,4 @@ class Camera():
         # dont find dice
         cv2.imwrite("C:/Users/rebor/PycharmProjects/PGA/orig.jpg", orig)
         return None
-    def midpoint(self,ptA, ptB):
-        return ((ptA[0] + ptB[0]) * 0.5, (ptA[1] + ptB[1]) * 0.5)
+
