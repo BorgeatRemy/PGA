@@ -124,7 +124,7 @@ class Camera():
             approx = cv2.approxPolyDP(c, 0.04 * perimetre, True)
 
             # if the area of the shape is too small or it's not a square/rectangle, just take the next shape
-            if cv2.contourArea(c) < 100 or len(approx) != 4:
+            if cv2.contourArea(c) < 100:
                 continue
 
             # compute the rotated bounding box of the contour
