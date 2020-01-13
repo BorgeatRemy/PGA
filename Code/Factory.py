@@ -299,7 +299,7 @@ class RobotControl():
     def setObjectPosition(self, dx = float, dy = float, rz = float):
         global pinceHeight,xMax,yMax,zMax,xMin,yMin,zMin
         self.object_posX = self.posx - dx - 0.002
-        self.object_posY = self.posy - CAMERA_DISTANCE - dy
+        self.object_posY = self.posy - CAMERA_DISTANCE + dy
         self.object_Rz = self.rz #+ rz
 
         # should control what is the smallest and biggest reachable coordinates (for an object allowable position)
