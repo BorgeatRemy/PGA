@@ -23,12 +23,13 @@ class Camera():
     def initRelation(self,robotController):
         self.robotController = robotController
         self.camera = PiCamera()
-    def capture(self):
         self.camera.resolution = (3280, 2464)
         self.camera.start_preview()
         sleep(2)
+    def capture(self):
+
         self.camera.capture("/home/pi/PGA/imageToAnalyse.jpg")
-        self.camera.stop_preview()
+        #self.camera.stop_preview()
 
     def cameraDetectionDice(self):
         numberDice = 0
@@ -160,7 +161,7 @@ class Camera():
             dA = dist.euclidean((tltrX, tltrY), (blbrX, blbrY))
             dB = dist.euclidean((tlblX, tlblY), (trbrX, trbrY))
 
-            if dA < dB + 6 and dA > dB - 6:  # dice seen right above it
+            if dA < dB + 6 and dA > dB - 6 and dA>500:  # dice seen right above it
 
                 # if the pixels per metric has not been initialized, then
                 # compute it as the ratio of pixels to supplied metric
