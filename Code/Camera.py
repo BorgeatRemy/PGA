@@ -114,20 +114,13 @@ class Camera():
         cnts = cv2.findContours(edged.copy(), cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
         cnts = imutils.grab_contours(cnts)
 
-        # 'pixels per metric' calibration variable
-        pixelsPerMetric = None
-        i = 0
-
-        orig = image.copy()
         for c in cnts:
 
-            # calculate the permiter and a approximation of the shape
-            perimetre = cv2.arcLength(c, True)
-            approx = cv2.approxPolyDP(c, 0.04 * perimetre, True)
-
             # if the area of the shape is too small or it's not a square/rectangle, just take the next shape
-            if cv2.contourArea(c) < 100:
+            if cv2.contourArea(c) < 25000:
                 continue
+
+            orig = image.copy()
 
             # compute the rotated bounding box of the contour
             box = cv2.minAreaRect(c)
@@ -183,7 +176,6 @@ class Camera():
 
                 # rotate the entire image and keep the whole picture
                 rotated = imutils.rotate_bound(image, self.angleRot_deg)
-                width_rotated, height_rotated, channel_rotated = rotated.shape
 
                 imageOrig_TopLeft_cornerX= 0
                 imageOrig_TopLeft_cornerY= 0
@@ -199,8 +191,8 @@ class Camera():
                 midY_rot = imageOrig_TopLeft_cornerY - vectorDistance * math.sin(vectorAngle - alpha)
 
                 # distance to the center of the dice from the middle of the image
-                deltaX = midX_rot - height_rotated / 2
-                deltaY = midY_rot - width_rotated / 2
+                deltaX = midX - width / 2
+                deltaY = height / 2 - midY
 
                 # distance to the center of the dice from the middle of the image in meter
                 self.deltaX_m = round(deltaX / (1000 * self.pixelsPerMeter), 3)
