@@ -263,13 +263,14 @@ class RobotControl():
             packet_21 = s.recv(8)
             packet_21 = binascii.hexlify(packet_21)  # Conversion to hexadecimal
             self.rz = struct.unpack('!d', binascii.unhexlify(packet_21))[0]
-
+            print(str(self.rz))
             s.close()
             if (self.posx < (self.object_posX + 0.01) and self.posx > (self.object_posX - 0.01) ):
                 if(self.posy < (self.object_posY + 0.01) and self.posy > (self.object_posY - 0.01)):
-                    self.master(EV_IN_POS_OBJECT)
-                    if (self.posz < (self.object_posZ + 0.01) and self.posz > (self.object_posZ - 0.01)):
-                        self.master(EV_POS_Z)
+                    if(self.rz < (self.object_Rz + 0.05) and self.rz > (self.object_Rz - 0.05)):
+                        self.master(EV_IN_POS_OBJECT)
+                        if (self.posz < (self.object_posZ + 0.01) and self.posz > (self.object_posZ - 0.01)):
+                            self.master(EV_POS_Z)
             if (self.posx < (self.xSearch + 0.01) and self.posx > (self.xSearch - 0.01)):
                 if(self.posy < (self.ySearch + 0.01) and self.posy > (self.ySearch - 0.01)):
                     self.master(EV_IN_POS)
