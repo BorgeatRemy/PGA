@@ -498,8 +498,8 @@ class RobotControl():
 #-----------------------------------------------------------------------------------------------------------------------
     def reStart(self):
         #in event of repressing start-button, initialize the system then begin searching
-         GPIO.output(led_Start, GPIO.HIGH)
-	 self.__init__()
+        GPIO.output(led_Start, GPIO.HIGH)
+        self.__init__()
 
 #-----------------------------------------------------------------------------------------------------------------------
     def stop(self):
@@ -510,7 +510,7 @@ class RobotControl():
         self.calibrate()
         #LED turns off
         GPIO.output(led_In_Master, GPIO.LOW)
-	GPIO.output(led_Start, GPIO.LOW)
+        GPIO.output(led_Start, GPIO.LOW)
 
 #-----------------------------------------------------------------------------------------------------------------------
     def getPins(self, pin =float):
