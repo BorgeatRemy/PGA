@@ -75,8 +75,10 @@ def stateMachine(ev=int):
 #-----------------------------------------------------------------------------------------------------------------------
 def callbackStart(channel):
     stateMachine(EV_START)
+    print("start")
 def callbackStop(channel):
     stateMachine(EV_STOP)
+    print("stop")
 
 GPIO.add_event_detect(button_Start, GPIO.RISING, callback=callbackStart, bouncetime=300)
 GPIO.add_event_detect(button_Stop, GPIO.RISING, callback=callbackStop, bouncetime=300)
