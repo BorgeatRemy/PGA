@@ -336,6 +336,7 @@ class RobotControl():
         global  object_width_Max,object_height_Max
         if self.object_width < object_width_Max:
             # openning of pince in x-direction, adjust the openning
+            print("go to position" + str(self.object_Rz))
             self.moveToPosition(self.object_posX, self.object_posY, self.posz,  self.object_Rz)
             # wait until arriving at position then do
             self.adjustPince(True)
