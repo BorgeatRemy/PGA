@@ -138,7 +138,7 @@ class RobotControl():
         BorderReached = 0
         self.xSearch = 0
         self.ySearch = -0.3
-        self.zSearch = 0.1
+        self.zSearch = 0.2
         self.rzSearch = 0
 
 
