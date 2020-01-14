@@ -243,7 +243,7 @@ class RobotControl():
             packet_16 = s.recv(8)
             packet_16 = binascii.hexlify(packet_16)  # Conversion to hexadecimal
             self.posx = struct.unpack('!d', binascii.unhexlify(packet_16))[0]
-
+            print(str(self.posx))
             packet_17 = s.recv(8)
             packet_17 = binascii.hexlify(packet_17)  # Conversion to hexadecimal
             self.posy = struct.unpack('!d', binascii.unhexlify(packet_17))[0]
