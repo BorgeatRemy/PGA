@@ -12,7 +12,8 @@ GPIO.setmode(GPIO.BOARD)
 GPIO.setup(button_Start, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
 GPIO.setup(12, GPIO.OUT, initial=GPIO.HIGH)
 GPIO.setup(button_Stop, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
-print("hello les amis")
+
+
 # assigne states and events
 STATE_INIT = 0
 STATE_START = 1
@@ -72,6 +73,9 @@ def stateMachine(ev=int):
         if state == STATE_STOP:
             theRobotController.stop()
 #-----------------------------------------------------------------------------------------------------------------------
+GPIO.add_event_detect(button_Start, GPIO.RISING, callback=stateMachine(EV_START), bouncetime=300)
+GPIO.add_event_detect(button_Stop, GPIO.RISING, callback=stateMachine(EV_STOP), bouncetime=300)
+
 class RobotControl_Thread(Thread):
     def __init__(self):
         Thread.__init__(self)
@@ -84,12 +88,12 @@ class RobotControl_Thread(Thread):
         if(theRobotController.takeOrRelease==True):
             theRobotController.statePliers()
         # buttons change state of operations
-        if GPIO.input(button_Start) == 1:
-            stateMachine(EV_START)
-            print("start")
-        if GPIO.input(button_Stop) == 1:
-            stateMachine(EV_STOP)
-            print("stop")
+        #if GPIO.input(button_Start) == 1:
+        #    stateMachine(EV_START)
+        #    print("start")
+       ## if GPIO.input(button_Stop) == 1:
+         #   stateMachine(EV_STOP)
+          #  print("stop")
 while (True):
     t = Timer(0.1,getData)
     t.start()
