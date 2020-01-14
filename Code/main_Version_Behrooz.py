@@ -62,7 +62,7 @@ def stateMachine(ev=int):
 
     #States operations
     if oldState != state:
-        if state == STATE_INIT:
+        #if state == STATE_INIT:
             #if oldState == STATE_STOP:
                 #theRobotController.reStart()
 
