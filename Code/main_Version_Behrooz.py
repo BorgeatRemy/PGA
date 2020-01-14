@@ -79,7 +79,7 @@ def callbackStop(channel):
     stateMachine(EV_STOP)
 
 GPIO.add_event_detect(button_Start, GPIO.RISING, callback=callbackStart, bouncetime=300)
-GPIO.add_event_detect(button_Stop, GPIO.RISING, callback=callBackStop, bouncetime=300)
+GPIO.add_event_detect(button_Stop, GPIO.RISING, callback=callbackStop, bouncetime=300)
 
 class RobotControl_Thread(Thread):
     def __init__(self):
