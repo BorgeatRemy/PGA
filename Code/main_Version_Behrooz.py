@@ -90,7 +90,7 @@ class RobotControl_Thread(Thread):
             stateMachine(EV_STOP)
             print("stop")
 while (True):
-    t = Timer(0.5,getData)
+    t = Timer(0.1,getData)
     t.start()
     t.join()
 
