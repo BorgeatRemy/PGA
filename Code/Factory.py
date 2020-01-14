@@ -466,7 +466,7 @@ class RobotControl():
 
                 lastZone = evZone
 
-                self.moveToPosition(self.xSearch, self.ySearch, self.zSearch, self.rz)
+                self.moveToPosition(self.xSearch, self.ySearch, self.zSearch, -1.25)
                 # camera : can begin his job, in case finding object call setObject(), in setObject evFound change state
                 # if not finding it changes evPass state to authorize go to another point to repeat this process
 
