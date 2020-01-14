@@ -34,7 +34,6 @@ if __name__ == "__main__":
 
     theCamera = Camera()
     theCamera.initRelation(theRobotController)
-    theRobotController.initRelations(theCamera)
 
    # theRobotController.calibrate()
     i = 0
@@ -65,8 +64,8 @@ def stateMachine(ev=int):
         if state == STATE_INIT:
             if oldState == STATE_STOP:
                 theRobotController.reStart()
-
         if state == STATE_START:
+            theRobotController.initRelations(theCamera)
             theRobotController.adjustPince(False)
             theRobotController.master(EV_INIT)
         if state == STATE_STOP:

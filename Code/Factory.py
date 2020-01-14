@@ -499,13 +499,11 @@ class RobotControl():
     def reStart(self):
         #in event of repressing start-button, initialize the system then begin searching
         self.state = ST_INIT
-
-
+        self.__init__()
 
 #-----------------------------------------------------------------------------------------------------------------------
     def stop(self):
     #in event of pressing  stop-button, go to initial position and stop searching until new request
-        self.__init__()
         self.calibrate()
         #LED turns off
         GPIO.output(led_In_Master, GPIO.LOW)
