@@ -366,6 +366,7 @@ class RobotControl():
         if self.state == ST_INIT:
             if event==EV_INIT:
                 self.state = ST_BEGIN_SEARCH
+                print("EV_INIT get")
         elif self.state == ST_BEGIN_SEARCH:
             if event == EV_IN_POS:
                 self.state = ST_END_SEARCH
