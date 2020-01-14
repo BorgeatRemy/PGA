@@ -508,6 +508,7 @@ class RobotControl():
         self.calibrate()
         #LED turns off
         GPIO.output(led_In_Master, GPIO.LOW)
+        self.theCamera.camera.stop_preview()
 
 #-----------------------------------------------------------------------------------------------------------------------
     def getPins(self, pin =float):

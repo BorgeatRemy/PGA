@@ -27,10 +27,7 @@ class Camera():
         self.camera.start_preview()
         sleep(2)
     def capture(self):
-
         self.camera.capture("/home/pi/PGA/imageToAnalyse.jpg")
-        #self.camera.stop_preview()
-
     def cameraDetectionDice(self):
         numberDice = 0
         print("take picture")

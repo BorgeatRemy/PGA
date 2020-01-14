@@ -8,6 +8,7 @@ import RPi.GPIO as GPIO
 #setup pins for buttons, define states and events
 button_Start = 29
 button_Stop = 22
+
 GPIO.setmode(GPIO.BOARD)
 GPIO.setup(button_Start, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
 GPIO.setup(12, GPIO.OUT, initial=GPIO.HIGH)
@@ -56,8 +57,6 @@ def stateMachine(ev=int):
     elif state == STATE_STOP:
         if ev == EV_START:
             state = STATE_INIT
-        if ev == EV_STOP:
-            doNothing = 0
 
     #States operations
     if oldState != state:
