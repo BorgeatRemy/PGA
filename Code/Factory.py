@@ -29,10 +29,10 @@ dY = 0.133
 pinceOut1=0
 pinceOut2=0
 pinceIn1=0
-led_Start=0
-led_Stop=0
-led_In_Master=0
-led_Got_Object=0
+led_Start=36
+led_Stop=40
+led_In_Master=31
+led_Got_Object=33
 
 EV_INIT = 0
 EV_FOUND = 1
@@ -353,13 +353,13 @@ class RobotControl():
 
 #-----------------------------------------------------------------------------------------------------------------------
     def master(self,event):
-        global xSearch,ySearch,zSearch, rzSearch,xMin,yMin,zMin,xMax,yMax,zMax,MaxReached,ZeroReached, dX,dY ,evZone, lastZone ,BorderReached
+        global xSearch,ySearch,zSearch, rzSearch,xMin,yMin,zMin,xMax,yMax,zMax,MaxReached,ZeroReached, dX,dY ,evZone, lastZone ,BorderReached,led_In_Master
         yMinSearch = -0.399
         yMaxSearch = -0.100
         dX = 0.05
         dY = 0.05
         #LED shows this part of the code is executed
-        #GPIO.output(master, GPIO.HIGH)
+        GPIO.output(led_In_Master, GPIO.HIGH)
 
         self.oldState = self.state
         # State machine changes
@@ -498,17 +498,19 @@ class RobotControl():
 #-----------------------------------------------------------------------------------------------------------------------
     def reStart(self):
         #in event of repressing start-button, initialize the system then begin searching
-        self.__init__()
+         GPIO.output(led_Start, GPIO.HIGH)
+	 self.__init__()
 
 #-----------------------------------------------------------------------------------------------------------------------
     def stop(self):
     #in event of pressing  stop-button, go to initial position and stop searching until new request
+        GPIO.output(led_Stop, GPIO.HIGH)
         self.theCamera.camera.stop_preview()
         self.__init__()
         self.calibrate()
         #LED turns off
         GPIO.output(led_In_Master, GPIO.LOW)
-
+	GPIO.output(led_Start, GPIO.LOW)
 
 #-----------------------------------------------------------------------------------------------------------------------
     def getPins(self, pin =float):

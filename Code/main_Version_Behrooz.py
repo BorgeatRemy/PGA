@@ -8,12 +8,13 @@ import RPi.GPIO as GPIO
 #setup pins for buttons, define states and events
 button_Start = 29
 button_Stop = 22
-
+led_Start = 36
 GPIO.setmode(GPIO.BOARD)
 GPIO.setup(button_Start, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
 GPIO.setup(12, GPIO.OUT, initial=GPIO.HIGH)
 GPIO.setup(button_Stop, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
-
+GPIO.setup(led_Start, GPIO.OUT)
+GPIO.output(les_Start, GPIO.LOW)
 
 # assigne states and events
 STATE_INIT = 0
@@ -67,6 +68,8 @@ def stateMachine(ev=int):
             theRobotController.initRelations(theCamera)
             theRobotController.adjustPince(False)
             theRobotController.master(EV_INIT)
+	   # GPIO.output(led_Start, GPIO.HIGH)
+
         if state == STATE_STOP:
             theRobotController.stop()
 #-----------------------------------------------------------------------------------------------------------------------
