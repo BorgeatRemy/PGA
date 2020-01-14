@@ -63,8 +63,8 @@ def stateMachine(ev=int):
     #States operations
     if oldState != state:
         if state == STATE_INIT:
-            if oldState == STATE_STOP:
-                theRobotController.reStart()
+            #if oldState == STATE_STOP:
+                #theRobotController.reStart()
 
         if state == STATE_START:
             theRobotController.adjustPince(False)
