@@ -322,7 +322,7 @@ class RobotControl():
         if GPIO.input(pinceOut2) == 0 and GPIO.input(pinceOut1) == 1:
             self.takeOrRelease = False
             self.master(EV_RELEASE)
-
+        print(str(GPIO.input(pinceOut1)) + " " + str(GPIO.input(pinceOut2)))
 #-----------------------------------------------------------------------------------------------------------------------
     # adjust openning of the pince,
     def adjustPince(self, choice):
