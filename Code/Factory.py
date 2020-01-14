@@ -432,14 +432,14 @@ class RobotControl():
                         self.ySearch = self.ySearch + dY
                         if self.ySearch > yMaxSearch:  # set new value for x
                             self.xSearch = self.xSearch + dX
-                            ZeroReached = yMaxSearch
+                            self.ySearch = yMaxSearch
 
                     # define new value for y in negative direction
                     if self.ySearch >= yMinSearch and lastZone == evZone:
                         self.ySearch = self.ySearch - dY
                         if self.ySearch < (yMinSearch - dY):  # set new value for x
                             self.xSearch = self.xSearch + dX
-                            MaxReached = yMinSearch
+                            self.ySearch = yMinSearch
 
                 # Zone 3
                 if evZone == 3:
