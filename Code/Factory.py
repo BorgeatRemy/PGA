@@ -357,7 +357,7 @@ class RobotControl():
         yMinSearch = -0.399
         yMaxSearch = -0.100
         dX = 0.050
-        dY = 0.100
+        dY = 0.050
         #LED shows this part of the code is executed
         GPIO.output(led_In_Master, GPIO.HIGH)
 
@@ -407,11 +407,12 @@ class RobotControl():
                 if evZone == 1 and self.ySearch == yMinSearch:
                     evZone = 2
                 # go to zone 3, zone three is the left part of the table
-                if ZeroReached <= (yMinSearch) and BorderReached == 0.200:
+                if ZeroReached <= (yMinSearch) and BorderReached >= 0.200: #borderReached value is x-direction limit
                     evZone = 3
 
-                if (BorderReached == -0.200 and ZeroReached <= (yMinSearch - dY)):
-                    print("search is complete")
+                if (BorderReached <= -0.200 and ZeroReached <= (yMinSearch)):
+                    evZone = 4
+					print("search is complete")
 
                 # Zone 1
                 if evZone == 1:
@@ -439,7 +440,7 @@ class RobotControl():
                     if ZeroReached >= yMinSearch and lastZone == evZone:
                         self.ySearch = self.ySearch - dY
                         ZeroReached = ZeroReached - dY
-                        if ZeroReached < (yMinSearch-dY ):  # set new value for x
+                        if ZeroReached < (yMinSearch ):  # set new value for x
                             self.xSearch = self.xSearch + dX
                             MaxReached = yMinSearch
 
@@ -462,7 +463,7 @@ class RobotControl():
                     if ZeroReached >= yMinSearch and lastZone == evZone:
                         self.ySearch = self.ySearch - dY
                         ZeroReached = ZeroReached - dY
-                        if ZeroReached < (yMinSearch - dY):  # set new value for x
+                        if ZeroReached < (yMinSearch):  # set new value for x
                             self.xSearch = self.xSearch - dX
                             MaxReached = yMinSearch
 
