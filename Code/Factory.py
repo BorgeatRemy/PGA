@@ -428,18 +428,20 @@ class RobotControl():
                         self.ySearch = yMinSearch
                         MaxReached = yMinSearch
                     # search in positive direction of y
-                    if self.ySearch <= yMaxSearch and lastZone == evZone:
+                    if MaxReached <= yMaxSearch and lastZone == evZone:
                         self.ySearch = self.ySearch + dY
-                        if self.ySearch > yMaxSearch:  # set new value for x
+                        MaxReached = MaxReached + dY
+                        if MaxReached > yMaxSearch:  # set new value for x
                             self.xSearch = self.xSearch + dX
-                            self.ySearch = yMaxSearch
+                            ZeroReached = yMaxSearch
 
                     # define new value for y in negative direction
-                    if self.ySearch >= yMinSearch and lastZone == evZone:
+                    if ZeroReached >= yMinSearch and lastZone == evZone:
                         self.ySearch = self.ySearch - dY
-                        if self.ySearch < (yMinSearch - dY):  # set new value for x
+                        ZeroReached = ZeroReached - dY
+                        if ZeroReached < (yMinSearch - dY):  # set new value for x
                             self.xSearch = self.xSearch + dX
-                            self.ySearch = yMinSearch
+                            MaxReached = yMinSearch
 
                 # Zone 3
                 if evZone == 3:
@@ -447,17 +449,21 @@ class RobotControl():
                     if lastZone == 2:
                         self.xSearch = -dX
                         self.ySearch = yMinSearch
+                        MaxReached = yMinSearch
                     # search in positive direction of y
-                    if self.ySearch <= yMaxSearch and lastZone == evZone:
+                    if MaxReached <= yMaxSearch and lastZone == evZone:
                         self.ySearch = self.ySearch + dY
-                        if self.ySearch > yMaxSearch:  # set new value for x
+                        MaxReached = MaxReached + dY
+                        if MaxReached > yMaxSearch:  # set new value for x
                             self.xSearch = self.xSearch - dX
+                            ZeroReached = yMaxSearch
                     # define new value for y in negative direction
-                    if self.ySearch >= yMinSearch and lastZone == evZone:
+                    if ZeroReached >= yMinSearch and lastZone == evZone:
                         self.ySearch = self.ySearch - dY
-                        if self.ySearch < (yMinSearch - dY):  # set new value for x
+                        ZeroReached = ZeroReached - dY
+                        if ZeroReached < (yMinSearch - dY):  # set new value for x
                             self.xSearch = self.xSearch - dX
-                            self.ySearch = yMinSearch
+                            MaxReached = yMinSearch
 
                 lastZone = evZone
 
@@ -498,17 +504,10 @@ class RobotControl():
 #-----------------------------------------------------------------------------------------------------------------------
     def stop(self):
     #in event of pressing  stop-button, go to initial position and stop searching until new request
-        self.theCamera.camera.stop_preview()
         self.__init__()
         self.calibrate()
         #LED turns off
         GPIO.output(led_In_Master, GPIO.LOW)
-
-
-#-----------------------------------------------------------------------------------------------------------------------
-    def getPins(self, pin =float):
-        state = GPIO.gpio_function(pin)
-        print(state)
 
 #-----------------------------------------------------------------------------------------------------------------------
     def getPosition(self):
