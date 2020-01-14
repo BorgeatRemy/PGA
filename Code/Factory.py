@@ -344,7 +344,7 @@ class RobotControl():
         elif self.object_width > object_width_Max and self.object_height < object_height_Max:
             # openning of pince in y-direction, adjust the openning
             self.object_Rz = self.object_Rz + math.pi / 2
-
+            print("go to position rot 90° " + str(self.object_Rz))
             self.moveToPosition(self.object_posX, self.object_posY, self.posz,  self.object_Rz)
             # wait until arriving at position then do
             self.adjustPince(True)
