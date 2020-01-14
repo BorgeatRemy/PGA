@@ -66,6 +66,7 @@ def stateMachine(ev=int):
                 theRobotController.reStart()
 
         if state == STATE_START:
+            theRobotController.statePliers(true) 
             theRobotController.master(EV_INIT)
 
         if state == STATE_STOP:

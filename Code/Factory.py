@@ -316,10 +316,10 @@ class RobotControl():
             print("Object is too big to hold")
 #-----------------------------------------------------------------------------------------------------------------------
     def statePliers(self):
-        if GPIO.input(pinceOut1) == 0 or GPIO.input(pinceOut2) == 1:
+        if GPIO.input(pinceOut1) == 0 and GPIO.input(pinceOut2) == 1:
             self.takeOrRelease = False
             self.master(EV_GRAB)
-        if GPIO.input(pinceOut2) == 0 or GPIO.input(pinceOut1) == 1:
+        if GPIO.input(pinceOut2) == 0 and GPIO.input(pinceOut1) == 1:
             self.takeOrRelease = False
             self.master(EV_RELEASE)
 
@@ -392,7 +392,7 @@ class RobotControl():
                 self.state = ST_THROW
         elif self.state == ST_THROW:
             if event == EV_RELEASE:
-                self.state = ST_INIT
+                self.state = ST_BEGIN_SEARCH
 
         # States operations
         if self.oldState != self.state:
@@ -484,12 +484,15 @@ class RobotControl():
                 self.object_posZ = 0.05
                 self.moveToPosition(self.posx,self.posy,self.object_posZ,self.rz)
             elif self.state == ST_GRAB:
+                print("grab")
                 self.adjustPince(True)
                 self.takeOrRelease = True
             elif self.state == ST_UP:
+                print("go up")
                 self.object_posZ = 0.2
                 self.moveToPosition(self.posx,self.posy,self.object_posZ,self.rz)
             elif self.state == ST_THROW:
+                print("release")
                 self.adjustPince(False)
                 self.takeOrRelease = True
 #-----------------------------------------------------------------------------------------------------------------------
