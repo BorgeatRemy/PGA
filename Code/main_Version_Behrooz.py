@@ -57,6 +57,7 @@ def stateMachine(ev=int):
     elif state == STATE_STOP:
         if ev == EV_START:
             state == STATE_INIT
+            print("State init")
         if ev == EV_STOP:
             doNothing = 0
 
@@ -67,10 +68,9 @@ def stateMachine(ev=int):
                 theRobotController.reStart()
 
         if state == STATE_START:
+            print("EV_INIT launch")
             theRobotController.adjustPince(False)
             theRobotController.master(EV_INIT)
-            print("EV_INIT launch")
-
         if state == STATE_STOP:
             theRobotController.stop()
 #-----------------------------------------------------------------------------------------------------------------------
