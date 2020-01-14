@@ -60,7 +60,7 @@ state = 0
 oldState = 0
 event = 0
 
-CAMERA_DISTANCE = 0.04
+CAMERA_DISTANCE = 0.035
 
 taken = 0
 class RobotControl():
