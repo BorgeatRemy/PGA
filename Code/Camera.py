@@ -154,7 +154,7 @@ class Camera():
             dA = dist.euclidean((tltrX, tltrY), (blbrX, blbrY))
             dB = dist.euclidean((tlblX, tlblY), (trbrX, trbrY))
 
-            if dA < dB + 6 and dA > dB - 6 :  # dice seen right above it
+            if dA < dB + 5 and dA > dB - 5 :  # dice seen right above it
 
                 # if the pixels per metric has not been initialized, then
                 # compute it as the ratio of pixels to supplied metric
@@ -195,8 +195,8 @@ class Camera():
                 deltaY = height / 2 - midY
 
                 # distance to the center of the dice from the middle of the image in meter
-                self.deltaX_m = round(deltaX / (1000 * self.pixelsPerMeter), 3)
-                self.deltaY_m = round(deltaY / (1000 * self.pixelsPerMeter), 3)
+                self.deltaX_m = round(deltaX / (1000 * self.pixelsPerMeter), 6)
+                self.deltaY_m = round(deltaY / (1000 * self.pixelsPerMeter), 6)
 
                 # crop the image to keep only the dice
                 img_crop = rotated[int(midY_rot - dB / 2) + 15:int(midY_rot + dB / 2) - 15,
