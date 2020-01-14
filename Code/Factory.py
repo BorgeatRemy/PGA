@@ -428,18 +428,16 @@ class RobotControl():
                         self.ySearch = yMinSearch
                         MaxReached = yMinSearch
                     # search in positive direction of y
-                    if MaxReached <= yMaxSearch and lastZone == evZone:
+                    if self.ySearch <= yMaxSearch and lastZone == evZone:
                         self.ySearch = self.ySearch + dY
-                        MaxReached = MaxReached + dY
-                        if MaxReached > yMaxSearch:  # set new value for x
+                        if self.ySearch > yMaxSearch:  # set new value for x
                             self.xSearch = self.xSearch + dX
                             ZeroReached = yMaxSearch
 
                     # define new value for y in negative direction
-                    if ZeroReached >= yMinSearch and lastZone == evZone:
+                    if self.ySearch >= yMinSearch and lastZone == evZone:
                         self.ySearch = self.ySearch - dY
-                        ZeroReached = ZeroReached - dY
-                        if ZeroReached < (yMinSearch - dY):  # set new value for x
+                        if self.ySearch < (yMinSearch - dY):  # set new value for x
                             self.xSearch = self.xSearch + dX
                             MaxReached = yMinSearch
 
@@ -449,21 +447,17 @@ class RobotControl():
                     if lastZone == 2:
                         self.xSearch = -dX
                         self.ySearch = yMinSearch
-                        MaxReached = yMinSearch
                     # search in positive direction of y
-                    if MaxReached <= yMaxSearch and lastZone == evZone:
+                    if self.ySearch <= yMaxSearch and lastZone == evZone:
                         self.ySearch = self.ySearch + dY
-                        MaxReached = MaxReached + dY
-                        if MaxReached > yMaxSearch:  # set new value for x
+                        if self.ySearch > yMaxSearch:  # set new value for x
                             self.xSearch = self.xSearch - dX
-                            ZeroReached = yMaxSearch
                     # define new value for y in negative direction
-                    if ZeroReached >= yMinSearch and lastZone == evZone:
+                    if self.ySearch >= yMinSearch and lastZone == evZone:
                         self.ySearch = self.ySearch - dY
-                        ZeroReached = ZeroReached - dY
-                        if ZeroReached < (yMinSearch - dY):  # set new value for x
+                        if self.ySearch < (yMinSearch - dY):  # set new value for x
                             self.xSearch = self.xSearch - dX
-                            MaxReached = yMinSearch
+                            self.ySearch = yMinSearch
 
                 lastZone = evZone
 
