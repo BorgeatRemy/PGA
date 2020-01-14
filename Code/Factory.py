@@ -125,8 +125,8 @@ class RobotControl():
         zMidPoint = 0.250
 
         zAve = 300
-        dX = 0.15  # a fraction of |xMax|
-        dY = 0.133 # a fraction of |yMin|
+        dX = 0.100  # a fraction of |xMax|
+        dY = 0.100 # a fraction of |yMin|
         dZ = 0.0
         global ZeroReached, MaxReached, BorderReached,evZone, lastZone
         ZeroReached = -0.555
@@ -356,8 +356,8 @@ class RobotControl():
         global xSearch,ySearch,zSearch, rzSearch,xMin,yMin,zMin,xMax,yMax,zMax,MaxReached,ZeroReached, dX,dY ,evZone, lastZone ,BorderReached,led_In_Master
         yMinSearch = -0.399
         yMaxSearch = -0.100
-        dX = 0.05
-        dY = 0.05
+        dX = 0.050
+        dY = 0.100
         #LED shows this part of the code is executed
         GPIO.output(led_In_Master, GPIO.HIGH)
 
@@ -439,9 +439,10 @@ class RobotControl():
                     if ZeroReached >= yMinSearch and lastZone == evZone:
                         self.ySearch = self.ySearch - dY
                         ZeroReached = ZeroReached - dY
-                        if ZeroReached < (yMinSearch - dY):  # set new value for x
+                        if ZeroReached < (yMinSearch-dY ):  # set new value for x
                             self.xSearch = self.xSearch + dX
                             MaxReached = yMinSearch
+
 
                 # Zone 3
                 if evZone == 3:
@@ -466,7 +467,18 @@ class RobotControl():
                             MaxReached = yMinSearch
 
                 lastZone = evZone
-
+                print("Zone")
+                print(evZone)
+                print("yMin")
+                print(yMinSearch)
+                print("y")
+                print(self.ySearch)
+                print("x")
+                print(self.xSearch)
+                print("MaxRe")
+                print(MaxReached)
+                print("ZeroR")
+                print(ZeroReached)
                 self.moveToPosition(self.xSearch, self.ySearch, self.zSearch, -1.25)
                 # camera : can begin his job, in case finding object call setObject(), in setObject evFound change state
                 # if not finding it changes evPass state to authorize go to another point to repeat this process
