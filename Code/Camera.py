@@ -15,7 +15,7 @@ class Camera():
     def __init__(self):
         self.deltaX_m = 0
         self.deltaY_m = 0
-        self.angleRot_deg = 0
+        self.angleRot = 0
         self.pixelsPerMeter = None
         self.imgCrop = None
         self.robotController = None
@@ -50,7 +50,7 @@ class Camera():
             else:
                 #generate evFound
                 print("dice found, not 6")
-                self.robotController.setObjectPosition(self.deltaX_m,self.deltaY_m,self.angleRot_deg)
+                self.robotController.setObjectPosition(self.deltaX_m,self.deltaY_m,self.angleRot)
                 print("(dx,dy): " + str(self.deltaX_m*1000) + ":" + str(self.deltaY_m*1000))
                 self.robotController.master(1)
         else:
@@ -167,28 +167,28 @@ class Camera():
                 midY = tltrY + (blbrY - tltrY) / 2
 
                 # rotation of the dice
-                alpha = math.asin((blbrX - tltrX) / dA);
-                self.angleRot_deg = round(math.degrees(alpha), 2)
+                self.angleRot = math.asin((blbrX - tltrX) / dA);
+                angleRot_deg = round(math.degrees(self.angleRot), 2)
 
                 # calculate the vector to the center of the dice
                 vectorAngle = -math.atan(midY / midX)
                 vectorDistance = dist.euclidean((0, 0), (midX, midY))
 
                 # rotate the entire image and keep the whole picture
-                rotated = imutils.rotate_bound(image, self.angleRot_deg)
+                rotated = imutils.rotate_bound(image, angleRot_deg)
 
                 imageOrig_TopLeft_cornerX= 0
                 imageOrig_TopLeft_cornerY= 0
 
                 # calculcate the postion of the top left corner of the image after rotation
-                if self.angleRot_deg > 0 and self.angleRot_deg < 180:
+                if angleRot_deg > 0 and angleRot_deg < 180:
                     imageOrig_TopLeft_cornerX = math.sin(alpha) * height
-                elif self.angleRot_deg < 0 and self.angleRot_deg > -180:
+                elif angleRot_deg < 0 and angleRot_deg > -180:
                     imageOrig_TopLeft_cornerY = -math.sin(alpha) * width
 
                 # calulate the position of the dice center after rotation
-                midX_rot = imageOrig_TopLeft_cornerX + vectorDistance * math.cos(vectorAngle - alpha)
-                midY_rot = imageOrig_TopLeft_cornerY - vectorDistance * math.sin(vectorAngle - alpha)
+                midX_rot = imageOrig_TopLeft_cornerX + vectorDistance * math.cos(vectorAngle - self.angleRot)
+                midY_rot = imageOrig_TopLeft_cornerY - vectorDistance * math.sin(vectorAngle - self.angleRot)
 
                 # distance to the center of the dice from the middle of the image
                 deltaX = midX - width / 2
