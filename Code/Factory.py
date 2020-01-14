@@ -498,7 +498,6 @@ class RobotControl():
 #-----------------------------------------------------------------------------------------------------------------------
     def reStart(self):
         #in event of repressing start-button, initialize the system then begin searching
-        self.state = ST_INIT
         self.__init__()
 
 #-----------------------------------------------------------------------------------------------------------------------
