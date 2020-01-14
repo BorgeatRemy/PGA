@@ -263,7 +263,7 @@ class RobotControl():
             packet_21 = s.recv(8)
             packet_21 = binascii.hexlify(packet_21)  # Conversion to hexadecimal
             self.rz = struct.unpack('!d', binascii.unhexlify(packet_21))[0]
-            
+            print(str(self.posx))
             s.close()
             if (self.posx < (self.object_posX + 0.001) and self.posx > (self.object_posX - 0.001) ):
                 if(self.posy < (self.object_posY + 0.001) and self.posy > (self.object_posY - 0.001)):
