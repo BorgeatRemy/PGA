@@ -504,11 +504,12 @@ class RobotControl():
 #-----------------------------------------------------------------------------------------------------------------------
     def stop(self):
     #in event of pressing  stop-button, go to initial position and stop searching until new request
+        self.theCamera.camera.stop_preview()
         self.__init__()
         self.calibrate()
         #LED turns off
         GPIO.output(led_In_Master, GPIO.LOW)
-        self.theCamera.camera.stop_preview()
+
 
 #-----------------------------------------------------------------------------------------------------------------------
     def getPins(self, pin =float):
