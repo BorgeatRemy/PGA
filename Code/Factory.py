@@ -316,13 +316,10 @@ class RobotControl():
             print("Object is too big to hold")
 #-----------------------------------------------------------------------------------------------------------------------
     def statePliers(self):
-        if GPIO.input(pinceOut1) == 0 and GPIO.input(pinceOut2) == 1:
-            self.takeOrRelease = False
+        if GPIO.input(pinceOut1) == 1 and GPIO.input(pinceOut2) == 0:
             self.master(EV_GRAB)
-        if GPIO.input(pinceOut2) == 0 and GPIO.input(pinceOut1) == 1:
-            self.takeOrRelease = False
+        if GPIO.input(pinceOut2) == 1 and GPIO.input(pinceOut1) == 0:
             self.master(EV_RELEASE)
-        print(str(GPIO.input(pinceOut1)) + " " + str(GPIO.input(pinceOut2)))
 #-----------------------------------------------------------------------------------------------------------------------
     # adjust openning of the pince,
     def adjustPince(self, choice):
@@ -398,7 +395,7 @@ class RobotControl():
         if self.oldState != self.state:
             if self.state == ST_BEGIN_SEARCH:
                 print("Begin Search")
-
+                self.takeOrRelease = False
                 BorderReached = self.xSearch
                 # go to zone 1 , zone one is the centeral part of the table
                 if (BorderReached == 0 and self.ySearch == -0.300):
@@ -488,6 +485,7 @@ class RobotControl():
                 self.adjustPince(True)
                 self.takeOrRelease = True
             elif self.state == ST_UP:
+                self.takeOrRelease = False
                 print("go up")
                 self.object_posZ = 0.2
                 self.moveToPosition(self.posx,self.posy,self.object_posZ,self.rz)
