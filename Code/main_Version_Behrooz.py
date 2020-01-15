@@ -46,10 +46,11 @@ def stateMachine(ev=int):
         if ev == EV_START:
             state = STATE_START
     elif state == STATE_START:
+        print("State start")
         if ev == EV_STOP:
             state = STATE_STOP
-            print("State stop")
     elif state == STATE_STOP:
+        print("State stop")
         if ev == EV_START:
             state = STATE_INIT
 
