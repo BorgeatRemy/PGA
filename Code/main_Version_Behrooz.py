@@ -33,13 +33,8 @@ def getData():
     obj2.join()
 if __name__ == "__main__":
     theRobotController = RobotControl()
-
     theCamera = Camera()
     theCamera.initRelation(theRobotController)
-
-   # theRobotController.calibrate()
-    i = 0
-    theRobotController.nextX = 100
 
 #-----------------------------------------------------------------------------------------------------------------------
 def stateMachine(ev=int):
@@ -50,7 +45,6 @@ def stateMachine(ev=int):
     if state == STATE_INIT:
         if ev == EV_START:
             state = STATE_START
-
     elif state == STATE_START:
         if ev == EV_STOP:
             state = STATE_STOP
@@ -79,8 +73,8 @@ def callbackStop(channel):
     stateMachine(EV_STOP)
     print("stop")
 
-GPIO.add_event_detect(button_Start, GPIO.RISING, callback=callbackStart, bouncetime=150)
-GPIO.add_event_detect(button_Stop, GPIO.RISING, callback=callbackStop, bouncetime=150)
+GPIO.add_event_detect(button_Start, GPIO.RISING, callback=callbackStart, bouncetime=200)
+GPIO.add_event_detect(button_Stop, GPIO.RISING, callback=callbackStop, bouncetime=200)
 
 class RobotControl_Thread(Thread):
     def __init__(self):
@@ -88,8 +82,6 @@ class RobotControl_Thread(Thread):
         theRobotController.updateCurrentPosition()
 
     def run(self):
-        global i
-        i+=1
         theRobotController.updateCurrentPosition()
         if(theRobotController.takeOrRelease==True):
             theRobotController.statePliers()
