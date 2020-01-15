@@ -65,6 +65,7 @@ def stateMachine(ev=int):
             theRobotController.master(EV_INIT)
             GPIO.output(led_Start, GPIO.HIGH)
         if state == STATE_STOP:
+            print("go in stop state")
             theRobotController.stop()
 #-----------------------------------------------------------------------------------------------------------------------
 def callbackStart(channel):
