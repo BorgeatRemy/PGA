@@ -1,0 +1,5 @@
+<map id="RobotControl.RobotControl.statePliers" name="RobotControl.RobotControl.statePliers">
+<area shape="rect" id="node1" title="check the state of the pliers" alt="" coords="5,5,215,47"/>
+<area shape="rect" id="node2" href="$class_robot_control_1_1_robot_control.html#a54355e96fbc78c53814d91588bfa5580" title="State machine who manage the soft as follow : Step 1 : Move the pliers Step 2 : Search the dice Step ..." alt="" coords="263,13,483,39"/>
+<area shape="rect" id="node3" href="$class_robot_control_1_1_robot_control.html#aabf32802df09fc59958e7db3d72f63bc" title="move the robot to a position XYZ with angle rz" alt="" coords="531,5,741,47"/>
+</map>

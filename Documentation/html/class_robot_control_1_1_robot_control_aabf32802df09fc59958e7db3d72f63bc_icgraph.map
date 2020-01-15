@@ -1,0 +1,6 @@
+<map id="RobotControl.RobotControl.moveToPosition" name="RobotControl.RobotControl.moveToPosition">
+<area shape="rect" id="node1" title="move the robot to a position XYZ with angle rz" alt="" coords="540,39,751,80"/>
+<area shape="rect" id="node2" href="$class_robot_control_1_1_robot_control.html#a54355e96fbc78c53814d91588bfa5580" title="State machine who manage the soft as follow : Step 1 : Move the pliers Step 2 : Search the dice Step ..." alt="" coords="272,46,492,73"/>
+<area shape="rect" id="node3" href="$class_robot_control_1_1_robot_control.html#af5417143894217221f719c1b4ba31d22" title="check the state of the pliers" alt="" coords="10,5,219,47"/>
+<area shape="rect" id="node4" href="$class_robot_control_1_1_robot_control.html#a0779e3e3f3ad3030971340ba260498da" title="update robot position get position X,Y,Z and orientation of tool center point" alt="" coords="5,71,224,112"/>
+</map>

@@ -1,0 +1,4 @@
+<map id="Camera.Camera.foundDice" name="Camera.Camera.foundDice">
+<area shape="rect" id="node1" title="search a dice in an image" alt="" coords="297,5,475,32"/>
+<area shape="rect" id="node2" href="$class_camera_1_1_camera.html#a0f658b49feda15e4b726144d105f4366" title="manage the dice detection then trigger the state machine of class RobotControl depending on the dice ..." alt="" coords="5,5,249,32"/>
+</map>

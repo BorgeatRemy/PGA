@@ -1,0 +1,5 @@
+<map id="RobotControl.RobotControl.updateCurrentPosition" name="RobotControl.RobotControl.updateCurrentPosition">
+<area shape="rect" id="node1" title="update robot position get position X,Y,Z and orientation of tool center point" alt="" coords="5,5,224,47"/>
+<area shape="rect" id="node2" href="$class_robot_control_1_1_robot_control.html#a54355e96fbc78c53814d91588bfa5580" title="State machine who manage the soft as follow : Step 1 : Move the pliers Step 2 : Search the dice Step ..." alt="" coords="272,13,492,39"/>
+<area shape="rect" id="node3" href="$class_robot_control_1_1_robot_control.html#aabf32802df09fc59958e7db3d72f63bc" title="move the robot to a position XYZ with angle rz" alt="" coords="540,5,751,47"/>
+</map>
