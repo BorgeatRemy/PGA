@@ -1,4 +1,0 @@
-<map id="RobotControl.RobotControl.master" name="RobotControl.RobotControl.master">
-<area shape="rect" id="node1" title="State machine who manage the soft as follow : Step 1 : Move the pliers Step 2 : Search the dice Step ..." alt="" coords="5,13,225,39"/>
-<area shape="rect" id="node2" href="$class_robot_control_1_1_robot_control.html#aabf32802df09fc59958e7db3d72f63bc" title="move the robot to a position XYZ with angle rz" alt="" coords="273,5,484,47"/>
-</map>

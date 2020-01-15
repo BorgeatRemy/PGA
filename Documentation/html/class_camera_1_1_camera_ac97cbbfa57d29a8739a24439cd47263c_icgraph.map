@@ -1,4 +1,0 @@
-<map id="Camera.Camera.detectNumberOnDice" name="Camera.Camera.detectNumberOnDice">
-<area shape="rect" id="node1" title="detect the number on a dice" alt="" coords="297,5,499,47"/>
-<area shape="rect" id="node2" href="$class_camera_1_1_camera.html#a0f658b49feda15e4b726144d105f4366" title="manage the dice detection then trigger the state machine of class RobotControl depending on the dice ..." alt="" coords="5,13,249,39"/>
-</map>

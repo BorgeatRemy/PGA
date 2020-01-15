@@ -1,7 +1,0 @@
-<map id="RobotControl.RobotControl.stop" name="RobotControl.RobotControl.stop">
-<area shape="rect" id="node1" title="this function stop the robot and put him in original state" alt="" coords="5,97,211,124"/>
-<area shape="rect" id="node2" href="$class_camera_1_1_camera.html#a3e9b98ab407ddde60290eb19101764d1" title="the constructor" alt="" coords="291,5,456,32"/>
-<area shape="rect" id="node3" href="$class_robot_control_1_1_robot_control.html#a2fbf4c5becdb340318de2788a3fcdc64" title="constructor" alt="" coords="283,57,463,98"/>
-<area shape="rect" id="node4" href="$classmain_1_1_robot_control___thread.html#a83ea2b0f084bf694e4c18acd34d69dd3" title="the constructor" alt="" coords="284,122,463,163"/>
-<area shape="rect" id="node5" href="$class_robot_control_1_1_robot_control.html#a3d2e0fd8707c2c54c021c8eab811f140" title="Put the robot in original state." alt="" coords="259,188,488,215"/>
-</map>

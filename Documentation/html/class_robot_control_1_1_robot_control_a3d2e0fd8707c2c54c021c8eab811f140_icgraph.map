@@ -1,4 +1,0 @@
-<map id="RobotControl.RobotControl.calibrate" name="RobotControl.RobotControl.calibrate">
-<area shape="rect" id="node1" title="Put the robot in original state." alt="" coords="259,5,488,32"/>
-<area shape="rect" id="node2" href="$class_robot_control_1_1_robot_control.html#a04f81a50fa3bcf318fe617a5ff6ac6e2" title="this function stop the robot and put him in original state" alt="" coords="5,5,211,32"/>
-</map>

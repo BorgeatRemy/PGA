@@ -1,4 +1,0 @@
-<map id="Camera.Camera.foundDice" name="Camera.Camera.foundDice">
-<area shape="rect" id="node1" title="search a dice in an image" alt="" coords="5,5,183,32"/>
-<area shape="rect" id="node2" href="$class_camera_1_1_camera.html#adef6f91f9749ef1ef45b4b0d1e2b05b6" title="calculate the mid point between 2 points" alt="" coords="231,5,400,32"/>
-</map>
