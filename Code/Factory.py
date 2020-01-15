@@ -521,7 +521,7 @@ class RobotControl():
         #in event of pressing
         #   stop-button, go to initial position and stop searching until new request
         print("Stop function")
-        GPIO.output(led_Stop, GPIO.HIGH)
+
         self.theCamera.camera.stop_preview()
         self.__init__()
         print("stop init")
@@ -529,7 +529,7 @@ class RobotControl():
         #LED turns off
         GPIO.output(led_In_Master, GPIO.LOW)
         GPIO.output(led_Start, GPIO.LOW)
-
+        GPIO.output(led_Stop, GPIO.HIGH)
 #-----------------------------------------------------------------------------------------------------------------------
     def getPins(self, pin =float):
         state = GPIO.gpio_function(pin)
