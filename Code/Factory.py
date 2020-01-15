@@ -166,8 +166,8 @@ class RobotControl():
         GPIO.output(led_In_Master, GPIO.LOW)
         GPIO.output(led_Got_Object, GPIO.LOW)
 
-        GPIO.setup(led_stop,GPIO.OUT)
-        GPIO.output(led_stop, GPIO.LOW)
+        GPIO.setup(led_Stop,GPIO.OUT)
+        GPIO.output(led_Stop, GPIO.LOW)
         # Netzwerk
         self.host = "192.168.1.3"
 
