@@ -516,8 +516,9 @@ class RobotControl():
 
 #-----------------------------------------------------------------------------------------------------------------------
     def stop(self):
-    #in event of pressing
-    #   stop-button, go to initial position and stop searching until new request
+        #in event of pressing
+        #   stop-button, go to initial position and stop searching until new request
+        print("Stop function")
         GPIO.output(led_Stop, GPIO.HIGH)
         self.theCamera.camera.stop_preview()
         self.__init__()
