@@ -521,6 +521,7 @@ class RobotControl():
         GPIO.output(led_Stop, GPIO.HIGH)
         self.theCamera.camera.stop_preview()
         self.__init__()
+        print("stop init")
         self.calibrate()
         #LED turns off
         GPIO.output(led_In_Master, GPIO.LOW)
