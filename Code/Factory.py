@@ -412,7 +412,7 @@ class RobotControl():
 
                 if (BorderReached <= -0.200 and ZeroReached <= (yMinSearch)):
                     evZone = 4
-					print("search is complete")
+                    print("search is complete")
 
                 # Zone 1
                 if evZone == 1:
