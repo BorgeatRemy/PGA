@@ -54,7 +54,6 @@ def stateMachine(ev=int):
     elif state == STATE_START:
         if ev == EV_STOP:
             state = STATE_STOP
-
     elif state == STATE_STOP:
         if ev == EV_START:
             state = STATE_INIT
@@ -68,8 +67,7 @@ def stateMachine(ev=int):
             theRobotController.initRelations(theCamera)
             theRobotController.adjustPince(False)
             theRobotController.master(EV_INIT)
-        # GPIO.output(led_Start, GPIO.HIGH)
-
+            GPIO.output(led_Start, GPIO.HIGH)
         if state == STATE_STOP:
             theRobotController.stop()
 #-----------------------------------------------------------------------------------------------------------------------
@@ -80,8 +78,8 @@ def callbackStop(channel):
     stateMachine(EV_STOP)
     print("stop")
 
-GPIO.add_event_detect(button_Start, GPIO.RISING, callback=callbackStart, bouncetime=300)
-GPIO.add_event_detect(button_Stop, GPIO.RISING, callback=callbackStop, bouncetime=300)
+GPIO.add_event_detect(button_Start, GPIO.RISING, callback=callbackStart, bouncetime=150)
+GPIO.add_event_detect(button_Stop, GPIO.RISING, callback=callbackStop, bouncetime=150)
 
 class RobotControl_Thread(Thread):
     def __init__(self):
