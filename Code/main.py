@@ -83,6 +83,7 @@ class RobotControl_Thread(Thread):
     ## the constructor
     def __init__(self):
         Thread.__init__(self)
+        theRobotController.calibrate()
     ## get position of the robot
     def run(self):
         theRobotController.updateCurrentPosition()

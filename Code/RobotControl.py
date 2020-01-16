@@ -85,6 +85,8 @@ class RobotControl():
         self.object_posX = 0
         ## y postion of the object to catch
         self.object_posY = 0
+        ## z postion of the object to catch
+        self.object_posZ = 0
         #3 orientation of the object to catch
         self.object_Rz = 0
 
@@ -209,7 +211,7 @@ class RobotControl():
                     if self.object_Rz - PRECISION_ANGLE <= self.rz <= self.object_Rz + PRECISION_ANGLE:
                         #generate an event if we reached the desired X,Y position and the correct rz angle
                         self.master(EV_IN_POS_OBJECT)
-                        if self.object_posZ- PRECISION_MOUVEMENT <= self.posz <=self.object_posZ + PRECISION_MOUVEMENT:
+                        if self.object_posZ - PRECISION_MOUVEMENT <= self.posz <=self.object_posZ + PRECISION_MOUVEMENT:
                             # generate an event if we reached the desired X,Y,Z position and the correct rz angle
                             self.master(EV_POS_Z)
 
