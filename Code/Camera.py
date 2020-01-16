@@ -84,8 +84,6 @@ class Camera():
     #  @return the dice number
     def detectNumberOnDice(self,image):
         nCircles = 0
-        height, width, channel = image.shape
-
         # put the image in grayScale and blur it
         gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
         grayFilter = cv2.medianBlur(gray, 5)
