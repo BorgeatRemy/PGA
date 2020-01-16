@@ -430,6 +430,9 @@ class RobotControl():
     ## this function stop the robot
     #  @param self The object pointer.
     def stop(self):
+        #stop the robot
+        self.moveToPosition(self.posx,self.posy,self.posz,self.rz)
+        #open pliers
         self.adjustPliers(False)
         #stop camera preview
         self.theCamera.camera.stop_preview()
