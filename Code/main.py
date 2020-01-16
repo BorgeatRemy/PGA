@@ -93,7 +93,7 @@ if __name__ == "__main__":
     GPIO.setup(LED_START, GPIO.OUT)
     GPIO.setup(LED_STOP, GPIO.OUT)
 
-    GPIO.output(LED_STOP, GPIO.HIGH)
+    GPIO.output(LED_START, GPIO.HIGH)
     GPIO.output(LED_STOP, GPIO.LOW)
 
     #Gpio add event for button start and stop

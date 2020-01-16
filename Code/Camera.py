@@ -59,7 +59,6 @@ class Camera():
         print("picture taken")
         self.imgCrop = self.foundDice("/home/pi/PGA/imageToAnalyse.jpg",16)
 
-
         if(self.imgCrop is not None) :
             print("dice found")
             numberDice = self.detectNumberOnDice(self.imgCrop)
