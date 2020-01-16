@@ -93,15 +93,15 @@ if __name__ == "__main__":
     #Gpio setup
     GPIO.setmode(GPIO.BOARD)
     GPIO.setmode(GPIO.BOARD)
-    GPIO.setup(button_Start, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
+    GPIO.setup(BUTTON_START, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
     GPIO.setup(12, GPIO.OUT, initial=GPIO.HIGH)
-    GPIO.setup(button_Stop, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
-    GPIO.setup(led_Start, GPIO.OUT)
-    GPIO.output(led_Start, GPIO.LOW)
+    GPIO.setup(BUTTON_STOP, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
+    GPIO.setup(LED_START, GPIO.OUT)
+    GPIO.output(LED_STOP, GPIO.LOW)
 
     #Gpio add event for button start and stop
-    GPIO.add_event_detect(button_Start, GPIO.RISING, callback=callbackStart, bouncetime=200)
-    GPIO.add_event_detect(button_Stop, GPIO.RISING, callback=callbackStop, bouncetime=200)
+    GPIO.add_event_detect(BUTTON_START, GPIO.RISING, callback=callbackStart, bouncetime=200)
+    GPIO.add_event_detect(BUTTON_STOP, GPIO.RISING, callback=callbackStop, bouncetime=200)
 
     ##class RobotControl object
     theRobotController = RobotControl()
