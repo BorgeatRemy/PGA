@@ -357,7 +357,7 @@ class RobotControl():
                 if self.evZone == 2:
                     # initialize the search in this zone
                     if self.lastZone == 1:
-                        self.xSearch = dX
+                        self.xSearch = DX_SEARCH
                         self.ySearch = Y_MIN_SEARCH
                         self.MaxReached = Y_MIN_SEARCH
                     # search in positive direction of y
