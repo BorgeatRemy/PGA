@@ -1,4 +1,4 @@
-from Factory import RobotControl
+from RobotControl import RobotControl
 from Camera import Camera
 from threading import Thread
 from threading import Timer
