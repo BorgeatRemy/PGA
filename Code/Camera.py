@@ -1,6 +1,5 @@
 from scipy.spatial import distance as dist
-from Factory import RobotControl
-import Factory
+from RobotControl import RobotControl
 from imutils import perspective
 from imutils import contours
 import numpy as np
@@ -10,24 +9,49 @@ import cv2
 import math
 from time import sleep
 from picamera import PiCamera
+## @package camera
+# perform image analysis
 
+##take a picture and anlyse it to detect a dice
 class Camera():
+    ##the constructor
     def __init__(self):
+        ##delta x of the object in meter from the center of the camera
         self.deltaX_m = 0
+        ##delta y of the object in meter from the center of the camera
         self.deltaY_m = 0
+        ##orientation the object in radian
         self.angleRot = 0
+        ##pixels per meter ration
         self.pixelsPerMeter = None
+        ##image of the dice
         self.imgCrop = None
+        ##robotController object
         self.robotController = None
+        ##camera object
         self.camera = None
-    def initRelation(self,robotController):
-        self.robotController = robotController
+
+        #init the camera
         self.camera = PiCamera()
         self.camera.resolution = (3280, 2464)
         self.camera.start_preview()
         sleep(2)
+
+    ## intialise relation
+    #  @param self The object pointer.
+    #  @param self The robot controller object
+    def initRelation(self,robotController):
+        self.robotController = robotController
+
+    ## capture an image
+    #  @param self The object pointer.
     def capture(self):
         self.camera.capture("/home/pi/PGA/imageToAnalyse.jpg")
+
+    ## manage the dice detection
+    #  then trigger the state machine of class RobotControl depending
+    #  on the dice number
+    #  @param self The object pointer.
     def cameraDetectionDice(self):
         numberDice = 0
         print("take picture")
@@ -38,7 +62,6 @@ class Camera():
 
         if(self.imgCrop is not None) :
             print("dice found")
-            cv2.imwrite("/home/pi/PGA/Code/crop.jpg", self.imgCrop)
             numberDice = self.detectNumberOnDice(self.imgCrop)
             if(numberDice == 6):
                 #generate ev6
@@ -55,10 +78,12 @@ class Camera():
             print("dice dice not found")
             self.robotController.master(9)
 
+    ## detect the number on a dice
+    #  @param self The object pointer.
+    #  @param image image of the dice
+    #  @return the dice number
     def detectNumberOnDice(self,image):
         nCircles = 0
-        height, width, channel = image.shape
-
         # put the image in grayScale and blur it
         gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
         grayFilter = cv2.medianBlur(gray, 5)
@@ -70,17 +95,26 @@ class Camera():
             circles = np.uint16(np.around(circles))
             for i in circles[0, :]:
                 nCircles += 1
-            print("Numéro du dé : " + str(nCircles))
+            print("Dice number : " + str(nCircles))
         else :
             print("circles null")
         # count the circles
 
-
         return nCircles
 
+    ## calculate the mid point between 2 points
+    #  @param self The object pointer.
+    #  @param ptA point 1
+    #  @param ptB point 2
+    #  @return the middle point
     def midpoint(self,ptA, ptB):
         return ((ptA[0] + ptB[0]) * 0.5, (ptA[1] + ptB[1]) * 0.5)
 
+    ## search a dice in an image
+    #  @param self The object pointer.
+    #  @param imagePath path to the image
+    #  @param width_object width in mm of the object
+    #  @return an image of the dice
     def foundDice(self,imagePath, width_object):
         image = cv2.imread(imagePath)
 
@@ -104,8 +138,6 @@ class Camera():
         edged = cv2.Canny(mask1, 40, 100)
         edged = cv2.dilate(edged, None, iterations=1)
         edged = cv2.erode(edged, None, iterations=1)
-
-        cv2.imwrite("/home/pi/PGA/Code/Edged.jpg",edged)
 
         # find contours in the edge map
         cnts = cv2.findContours(edged.copy(), cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
