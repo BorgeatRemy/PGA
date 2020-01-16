@@ -103,8 +103,8 @@ if __name__ == "__main__":
     GPIO.output(LED_STOP, GPIO.LOW)
 
     #Gpio add event for button start and stop
-    GPIO.add_event_detect(BUTTON_START, GPIO.RISING, callback=callbackStart, bouncetime=200)
-    GPIO.add_event_detect(BUTTON_STOP, GPIO.RISING, callback=callbackStop, bouncetime=200)
+    GPIO.add_event_detect(BUTTON_START, GPIO.RISING, callback=callbackStart, bouncetime=400)
+    GPIO.add_event_detect(BUTTON_STOP, GPIO.RISING, callback=callbackStop, bouncetime=400)
 
     ##class RobotControl object
     theRobotController = RobotControl()
