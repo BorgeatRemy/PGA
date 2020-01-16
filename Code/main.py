@@ -60,7 +60,7 @@ def stateMachine(ev=int):
     #States operations
     if oldState != state:
         if state == STATE_INIT:
-            if oldState == STATE_STOP:
+            if oldState == STATE_RESET:
                 GPIO.output(LED_STOP, GPIO.LOW)
         if state == STATE_START:
             theRobotController.initRelations(theCamera)
