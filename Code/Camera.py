@@ -95,7 +95,7 @@ class Camera():
             circles = np.uint16(np.around(circles))
             for i in circles[0, :]:
                 nCircles += 1
-            print("Numéro du dé : " + str(nCircles))
+            print("Dice number : " + str(nCircles))
         else :
             print("circles null")
         # count the circles
