@@ -11,7 +11,7 @@ import math
 from time import sleep
 from picamera import PiCamera
 ## @package camera
-# image analysis
+# perform image analysis
 
 ##take a picture and anlyse it to detect a dice
 class Camera():

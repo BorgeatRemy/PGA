@@ -91,15 +91,15 @@ class RobotControl():
         #Pliers is opening or closing
         self.takeOrRelease = False
 
-        ##
+        ##minimal y value
         self.ZeroReached = -0.555
-        ##
+        ##maximal y value
         self.MaxReached = -0.555
-        ##
+        ##zone to search the dice
         self.evZone = 1
-        ##
+        ##last zone where the dice has been search
         self.lastZone = 1
-        ##
+        ##border x value
         self.BorderReached = 0
 
         ##position x to search the object
