@@ -56,7 +56,7 @@ def stateMachine(ev=int):
             state = STATE_RESET
     elif state == STATE_RESET:
         if ev == EV_START:
-            state = STATE_INIT
+            state = STATE_START
     #States operations
     if oldState != state:
         if state == STATE_INIT:
