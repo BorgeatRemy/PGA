@@ -47,11 +47,9 @@ def stateMachine(ev=int):
         if ev == EV_START:
             state = STATE_START
     elif state == STATE_START:
-        print("State start")
         if ev == EV_STOP:
             state = STATE_STOP
     elif state == STATE_STOP:
-        print("State stop")
         if ev == EV_START:
             state = STATE_INIT
 
@@ -66,7 +64,6 @@ def stateMachine(ev=int):
             theRobotController.master(EV_INIT)
             GPIO.output(LED_START, GPIO.HIGH)
         if state == STATE_STOP:
-            print("go in stop state")
             theRobotController.stop()
 ## function called when button start pressed
 def callbackStart(channel):

@@ -195,13 +195,13 @@ class RobotControl():
             self.posz = struct.unpack('!d',packet_posZ)[0]
 
             packet_rx = s.recv(8)
-            self.posx = struct.unpack('!d', packet_rx)[0]
+            self.rx= struct.unpack('!d', packet_rx)[0]
 
             packet_ry = s.recv(8)
-            self.posy = struct.unpack('!d',packet_ry)[0]
+            self.ry = struct.unpack('!d',packet_ry)[0]
 
             packet_rz = s.recv(8)
-            self.posz = struct.unpack('!d',packet_rz)[0]
+            self.rz = struct.unpack('!d',packet_rz)[0]
 
             s.close()
 
