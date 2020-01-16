@@ -52,7 +52,7 @@ ST_RELEASE = 8
 CAMERA_DISTANCE = 0.05
 
 #define precision of the robotics arm
-PRECISION_XYZ = 0.001  #precision of the Tool Center Point in X,Y,Z at 1mm
+PRECISION_MOUVEMENT = 0.001  #precision of the Tool Center Point in X,Y,Z at 1mm
 PRECISION_ANGLE = 0.05 #precision of the Tool Center Point in rz  at 0.05rad
 
 ##Control the robot
