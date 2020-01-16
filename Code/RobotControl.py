@@ -117,12 +117,10 @@ class RobotControl():
         GPIO.setup(PLIER_IN_1, GPIO.OUT)
         GPIO.setup(PLIER_OUT_1, GPIO.IN)
         GPIO.setup(PLIER_OUT_2, GPIO.IN)
-        GPIO.setup(LED_IN_MASTER, GPIO.OUT)
-        GPIO.setup(LED_GOT_OBJECT, GPIO.OUT)
+        GPIO.setup(LED_FOUND_DICE, GPIO.OUT)
         GPIO.setup(LED_STOP, GPIO.OUT)
         # initial state of pins
-        GPIO.output(LED_IN_MASTER, GPIO.LOW)
-        GPIO.output(LED_GOT_OBJECT, GPIO.LOW)
+        GPIO.output(LED_FOUND_DICE, GPIO.LOW)
         GPIO.output(LED_STOP, GPIO.LOW)
 
         ## IP Address of the robot
