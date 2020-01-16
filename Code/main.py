@@ -71,19 +71,14 @@ def stateMachine(ev=int):
 ## function called when button start pressed
 def callbackStart(channel):
     stateMachine(EV_START)
-    print("start")
-
 ## function called when button stop pressed
 def callbackStop(channel):
     stateMachine(EV_STOP)
-    print("stop")
-
 ##Class RobotControl_Thread update postion of the robot
 class RobotControl_Thread(Thread):
     ## the constructor
     def __init__(self):
         Thread.__init__(self)
-        theRobotController.calibrate()
     ## get position of the robot
     def run(self):
         theRobotController.updateCurrentPosition()
@@ -115,6 +110,7 @@ if __name__ == "__main__":
     #init relation bewteen camera and robot controller
     theCamera.initRelation(theRobotController)
 
+    theRobotController.calibrate()
 while (True):
     ##timer to launch thread periodically
     t = Timer(0.1,getData)
