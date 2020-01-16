@@ -15,8 +15,7 @@ PLIER_IN_1 = 16  # pin  of Raspberry connected to plier digital input
 #Led assignement
 LED_START = 36      #Green led to show when the robot run
 LED_STOP = 40       #Red led to show when the robot is stopped
-LED_IN_MASTER = 31
-LED_GOT_OBJECT = 33
+LED_FOUND_DICE = 31
 
 #define
 Y_MIN_SEARCH = -0.399
@@ -291,7 +290,6 @@ class RobotControl():
     #  @param event event to trigger state machine.
     def master(self,event):
         #LED shows this part of the code is executed
-        GPIO.output(LED_IN_MASTER, GPIO.HIGH)
 
         self.oldState = self.state
         # State machine changes
@@ -410,6 +408,7 @@ class RobotControl():
                 print("End Search")
                 self.theCamera.cameraDetectionDice()
             elif self.state == ST_GOXY:
+                GPIO.output(LED_FOUND_DICE, GPIO.HIGH)
                 self.moveToPosition(self.object_posX, self.object_posY, self.posz, self.object_Rz)
             elif self.state == ST_DOWN:
                 print("posx,y okay")
@@ -426,6 +425,7 @@ class RobotControl():
                 self.moveToPosition(self.posx,self.posy,self.object_posZ,self.rz)
             elif self.state == ST_THROW:
                 print("release")
+                GPIO.output(LED_FOUND_DICE, GPIO.LOW)
                 self.adjustPliers(False)
                 self.takeOrRelease = True
 
@@ -439,6 +439,5 @@ class RobotControl():
         #put the robot back to origin
         self.calibrate()
         #LED turns off
-        GPIO.output(LED_IN_MASTER, GPIO.LOW)
-        GPIO.output(LED_START, GPIO.LOW)
+        GPIO.output(LED_FOUND_DICE, GPIO.LOW)
         GPIO.output(LED_STOP, GPIO.HIGH)

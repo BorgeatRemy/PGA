@@ -57,7 +57,7 @@ def stateMachine(ev=int):
     if oldState != state:
         if state == STATE_INIT:
             if oldState == STATE_STOP:
-                GPIO.output(LED_START, GPIO.HIGH)
+                GPIO.output(LED_STOP, GPIO.LOW)
         if state == STATE_START:
             theRobotController.initRelations(theCamera)
             theRobotController.adjustPliers(False)
@@ -92,6 +92,8 @@ if __name__ == "__main__":
     GPIO.setup(BUTTON_STOP, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
     GPIO.setup(LED_START, GPIO.OUT)
     GPIO.setup(LED_STOP, GPIO.OUT)
+
+    GPIO.output(LED_STOP, GPIO.HIGH)
     GPIO.output(LED_STOP, GPIO.LOW)
 
     #Gpio add event for button start and stop
