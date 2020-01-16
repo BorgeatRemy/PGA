@@ -334,7 +334,7 @@ class RobotControl():
                     self.evZone = 1
 
                 # go to zone 2, zone two is the right part of the table
-                if evZone == 1 and self.ySearch == Y_MIN_SEARCH:
+                if self.evZone == 1 and self.ySearch == Y_MIN_SEARCH:
                     self.evZone = 2
                 # go to zone 3, zone three is the left part of the table
                 if self.ZeroReached <= (Y_MIN_SEARCH) and self.BorderReached >= 0.200: #borderReached value is x-direction limit
@@ -378,7 +378,7 @@ class RobotControl():
                 # Zone 3
                 if self.evZone == 3:
                     # initialize the search in this zone
-                    if lastZone == 2:
+                    if self.lastZone == 2:
                         self.xSearch = -DX_SEARCH
                         self.ySearch = Y_MIN_SEARCH
                         self.MaxReached = Y_MIN_SEARCH
