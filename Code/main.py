@@ -17,6 +17,8 @@ LED_STOP = 40       #Red led to show when the robot is stopped
 STATE_INIT = 0
 STATE_START = 1
 STATE_STOP = 2
+STATE_RESET = 3
+
 EV_INIT = 0
 EV_START = 1
 EV_STOP = 2
@@ -51,8 +53,10 @@ def stateMachine(ev=int):
             state = STATE_STOP
     elif state == STATE_STOP:
         if ev == EV_START:
+            state = STATE_RESET
+    elif state == STATE_RESET:
+        if ev == EV_START:
             state = STATE_INIT
-
     #States operations
     if oldState != state:
         if state == STATE_INIT:
@@ -65,6 +69,8 @@ def stateMachine(ev=int):
             GPIO.output(LED_START, GPIO.HIGH)
         if state == STATE_STOP:
             theRobotController.stop()
+        if state == STATE_RESET:
+            theRobotController.reset()
 ## function called when button start pressed
 def callbackStart(channel):
     stateMachine(EV_START)

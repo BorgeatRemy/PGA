@@ -427,15 +427,20 @@ class RobotControl():
                 self.adjustPliers(False)
                 self.takeOrRelease = True
 
-    ## this function stop the robot and put him in original state
+    ## this function stop the robot
     #  @param self The object pointer.
     def stop(self):
         #stop camera preview
         self.theCamera.camera.stop_preview()
         #init the robot
         self.__init__()
-        #put the robot back to origin
-        self.calibrate()
         #LED turns off
         GPIO.output(LED_FOUND_DICE, GPIO.LOW)
         GPIO.output(LED_STOP, GPIO.HIGH)
+
+    ## reset the robot back to an original state
+    #  @param self The object pointer.
+    def reset(self):
+        #put the robot back to origin
+        self.calibrate()
+
