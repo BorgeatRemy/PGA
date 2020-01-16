@@ -385,7 +385,7 @@ class RobotControl():
                         self.ySearch = Y_MIN_SEARCH
                         self.MaxReached = Y_MIN_SEARCH
                     # search in positive direction of y
-                    if self.MaxReached <= Y_MAX_SEARCH and lastZone == evZone:
+                    if self.MaxReached <= Y_MAX_SEARCH and self.lastZone == self.evZone:
                         self.ySearch = self.ySearch + DY_SEARCH
                         self.MaxReached = self.MaxReached + DY_SEARCH
                         if self.MaxReached > Y_MAX_SEARCH:  # set new value for x
