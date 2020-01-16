@@ -11,6 +11,7 @@ import RPi.GPIO as GPIO
 BUTTON_START = 29
 BUTTON_STOP = 22
 LED_START = 36
+LED_STOP = 40       #Red led to show when the robot is stopped
 
 # assigne states and events
 STATE_INIT = 0
@@ -97,6 +98,7 @@ if __name__ == "__main__":
     GPIO.setup(12, GPIO.OUT, initial=GPIO.HIGH)
     GPIO.setup(BUTTON_STOP, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
     GPIO.setup(LED_START, GPIO.OUT)
+    GPIO.setup(LED_STOP, GPIO.OUT)
     GPIO.output(LED_STOP, GPIO.LOW)
 
     #Gpio add event for button start and stop
