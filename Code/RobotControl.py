@@ -397,7 +397,7 @@ class RobotControl():
                         self.ZeroReached = self.ZeroReached - DY_SEARCH
                         if self.ZeroReached < Y_MIN_SEARCH:  # set new value for x
                             self.xSearch = self.xSearch - DX_SEARCH
-                            self.MaxReached = self.Y_MIN_SEARCH
+                            self.MaxReached = Y_MIN_SEARCH
 
                 self.lastZone = self.evZone
                 self.moveToPosition(self.xSearch, self.ySearch, self.zSearch, -1.25)
