@@ -59,17 +59,16 @@ def stateMachine(ev=int):
             state = STATE_START
     #States operations
     if oldState != state:
-        if state == STATE_INIT:
-            if oldState == STATE_RESET:
-                GPIO.output(LED_STOP, GPIO.LOW)
+
         if state == STATE_START:
+            GPIO.output(LED_STOP, GPIO.LOW)
             theRobotController.initRelations(theCamera)
             theRobotController.adjustPliers(False)
             theRobotController.master(EV_INIT)
             GPIO.output(LED_START, GPIO.HIGH)
-        if state == STATE_STOP:
+        elif state == STATE_STOP:
             theRobotController.stop()
-        if state == STATE_RESET:
+        elif state == STATE_RESET:
             theRobotController.reset()
 ## function called when button start pressed
 def callbackStart(channel):
