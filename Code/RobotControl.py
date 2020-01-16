@@ -417,7 +417,7 @@ class RobotControl():
                 self.moveToPosition(self.posx,self.posy,self.object_posZ,self.object_Rz)
             elif self.state == ST_GRAB:
                 print("grab")
-                self.adjustPince(True)
+                self.adjustPliers(True)
                 self.takeOrRelease = True
             elif self.state == ST_UP:
                 self.takeOrRelease = False
@@ -426,7 +426,7 @@ class RobotControl():
                 self.moveToPosition(self.posx,self.posy,self.object_posZ,self.rz)
             elif self.state == ST_THROW:
                 print("release")
-                self.adjustPince(False)
+                self.adjustPliers(False)
                 self.takeOrRelease = True
 
     ## this function stop the robot and put him in original state
