@@ -32,9 +32,9 @@ class Camera():
         self.camera = None
 
         #init the camera
-#        self.camera = PiCamera()
-#        self.camera.resolution = (3280, 2464)
-#        self.camera.start_preview()
+        self.camera = PiCamera()
+        self.camera.resolution = (3280, 2464)
+        self.camera.start_preview()
         sleep(2)
 
     ## intialise relation

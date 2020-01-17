@@ -407,7 +407,7 @@ class RobotControl():
 
 
                 if self.evZone == 4:
-		    # initialize the search in this zone
+		            # initialize the search in this zone
                     if self.lastZone == 3:
                         self.xSearch = 0
                         self.ySearch = -0.200
@@ -429,8 +429,7 @@ class RobotControl():
                 # define new value for y in positive direction
             elif self.state == ST_END_SEARCH:
                 print("End Search")
-#                self.theCamera.cameraDetectionDice()
-                self.master(9)
+                self.theCamera.cameraDetectionDice()
             elif self.state == ST_GOXY:
                 GPIO.output(LED_FOUND_DICE, GPIO.HIGH)
                 self.moveToPosition(self.object_posX, self.object_posY, self.posz, self.object_Rz)
