@@ -46,7 +46,7 @@ class Camera():
     ## capture an image
     #  @param self The object pointer.
     def capture(self):
-        self.camera.capture("/home/pi/PGA/imageToAnalyse.jpg")
+        self.camera.capture("/home/pi/PGA/imageToAnalyse2.jpg")
 
     ## manage the dice detection
     #  then trigger the state machine of class RobotControl depending
@@ -57,7 +57,7 @@ class Camera():
         print("take picture")
         self.capture()
         print("picture taken")
-        self.imgCrop = self.foundDice("/home/pi/PGA/imageToAnalyse.jpg",16)
+        self.imgCrop = self.foundDice("/home/pi/PGA/imageToAnalyse2.jpg",16)
 
         if(self.imgCrop is not None) :
             print("dice found")
