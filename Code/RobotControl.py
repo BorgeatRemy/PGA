@@ -99,7 +99,7 @@ class RobotControl():
         ##zone to search the dice
         self.evZone = 1
         ##last zone where the dice has been search
-        self.lastZone = 1
+        self.lastZone = 0
         ##border x value
         self.BorderReached = 0
 
@@ -288,9 +288,12 @@ class RobotControl():
     #  @param event event to trigger state machine.
     def master(self,event):
         #LED shows this part of the code is executed
-
         self.oldState = self.state
         # State machine changes
+        print ("position:")
+        print (self.posx)
+        print (self.posy)
+        print (self.posz)
         if self.state == ST_INIT:
             if event==EV_INIT:
                 self.state = ST_BEGIN_SEARCH
@@ -320,35 +323,43 @@ class RobotControl():
         elif self.state == ST_THROW:
             if event == EV_RELEASE:
                 self.state = ST_BEGIN_SEARCH
-
         # States operations
         if self.oldState != self.state:
             if self.state == ST_BEGIN_SEARCH:
                 print("Begin Search")
                 self.takeOrRelease = False
+                print ("search:")
+                print (self.xSearch)
+                print (self.ySearch)
+                print (self.zSearch)
                 self.BorderReached = self.xSearch
                 # go to zone 1 , zone one is the centeral part of the table
                 if self.BorderReached == 0 and self.ySearch == -0.300:
                     self.evZone = 1
 
                 # go to zone 2, zone two is the right part of the table
-                if self.evZone == 1 and self.ySearch == Y_MIN_SEARCH:
+                if self.evZone == 1 and self.ySearch <= Y_MIN_SEARCH  :
                     self.evZone = 2
                 # go to zone 3, zone three is the left part of the table
-                if self.ZeroReached <= (Y_MIN_SEARCH) and self.BorderReached >= 0.200: #borderReached value is x-direction limit
+                if self.ZeroReached <= Y_MIN_SEARCH and self.BorderReached >= 0.200: #borderReached value is x-direction limit
                     self.evZone = 3
 
                 if self.BorderReached <= -0.200 and self.ZeroReached <= (Y_MIN_SEARCH):
                     self.evZone = 4
                     print("search is complete")
+                    
 
                 # Zone 1
-                if self.evZone == 1:
-                    if self.xSearch == 0 and self.ySearch == -0.200:
-                        self.ySearch = Y_MIN_SEARCH
-                    else:
-                        self.ySearch = -0.200  # attention  not more than this (not less than |-200|)
-
+                if self.evZone == 1 :
+		    # initialize the search in this zone
+                    if self.lastZone == 0 :
+                        self.xSearch = 0
+                        self.ySearch = -0.200
+                        self.MaxReached = -0.200 
+                    # search in positive direction of y
+                    if self.MaxReached <= (Y_MAX_SEARCH -0.100) and self.lastZone == self.evZone and self.MaxReached >= Y_MIN_SEARCH:
+                        self.ySearch = self.ySearch - DY_SEARCH
+                        self.MaxReached = self.MaxReached - DY_SEARCH
                 # Zone 2
                 if self.evZone == 2:
                     # initialize the search in this zone
@@ -365,13 +376,12 @@ class RobotControl():
                             self.ZeroReached = Y_MAX_SEARCH
 
                     # define new value for y in negative direction
-                    if self.ZeroReached >= Y_MIN_SEARCH and self.lastZone == self.evZone:
+                    if self.ZeroReached >= Y_MIN_SEARCH   and self.lastZone == self.evZone:
                         self.ySearch = self.ySearch - DY_SEARCH
                         self.ZeroReached = self.ZeroReached - DY_SEARCH
-                        if self.ZeroReached < Y_MIN_SEARCH :  # set new value for x
+                        if self.ZeroReached <= Y_MIN_SEARCH  :  # set new value for x
                             self.xSearch = self.xSearch + DX_SEARCH
                             self.MaxReached = Y_MIN_SEARCH
-
 
                 # Zone 3
                 if self.evZone == 3:
@@ -391,12 +401,27 @@ class RobotControl():
                     if self.ZeroReached >= Y_MIN_SEARCH and self.lastZone == self.evZone:
                         self.ySearch = self.ySearch - DY_SEARCH
                         self.ZeroReached = self.ZeroReached - DY_SEARCH
-                        if self.ZeroReached < Y_MIN_SEARCH:  # set new value for x
+                        if self.ZeroReached <= Y_MIN_SEARCH :  # set new value for x
                             self.xSearch = self.xSearch - DX_SEARCH
                             self.MaxReached = Y_MIN_SEARCH
 
+
+                if self.evZone == 4:
+		    # initialize the search in this zone
+                    if self.lastZone == 3:
+                        self.xSearch = 0
+                        self.ySearch = -0.200
+                        self.MaxReached = -0.200 
+                    # search in positive direction of y
+                    if self.MaxReached <= (Y_MAX_SEARCH -0.100) and self.lastZone == self.evZone and self.MaxReached >= Y_MIN_SEARCH:
+                        self.ySearch = self.ySearch - DY_SEARCH
+                        self.MaxReached = self.MaxReached - DY_SEARCH
+
+
                 self.lastZone = self.evZone
                 self.moveToPosition(self.xSearch, self.ySearch, self.zSearch, -1.25)
+
+
                 # camera : can begin his job, in case finding object call setObject(), in setObject evFound change state
                 # if not finding it changes evPass state to authorize go to another point to repeat this process
 
@@ -404,7 +429,8 @@ class RobotControl():
                 # define new value for y in positive direction
             elif self.state == ST_END_SEARCH:
                 print("End Search")
-                self.theCamera.cameraDetectionDice()
+#                self.theCamera.cameraDetectionDice()
+                self.master(9)
             elif self.state == ST_GOXY:
                 GPIO.output(LED_FOUND_DICE, GPIO.HIGH)
                 self.moveToPosition(self.object_posX, self.object_posY, self.posz, self.object_Rz)
@@ -426,6 +452,8 @@ class RobotControl():
                 GPIO.output(LED_FOUND_DICE, GPIO.LOW)
                 self.adjustPliers(False)
                 self.takeOrRelease = True
+
+
 
     ## this function stop the robot
     #  @param self The object pointer.
